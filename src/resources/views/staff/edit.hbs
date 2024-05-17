@@ -1,0 +1,35 @@
+
+<div class="mt-4">
+    <h3 class="text-big display-center">Sửa Nhân Viên</h3>
+      <form  method="POST" action="/staff/{{Staff._id}}?_method=PUT">
+            <div class="form-group">
+                <label class="text mt-4 " for="name">Name</label>
+                <input type="text" class="form-control" value="{{Staff.name}}" id="staffName" name="name" placeholder="Enter name of staff">
+            </div>
+            <div class="form-group">
+                <label class="text mt-4" for="email">Email</label>
+                <input type="text" class="form-control" value="{{Staff.email}}" id="staffEmail" name="email" placeholder="Enter email of staff">
+            </div>
+            <div class="form-group">
+                <label class="text mt-4" for="img">Image</label>
+                <input type="text" class="form-control" value="{{Staff.img}}" id="staffImg" name="img" placeholder="Enter img of staff">
+            </div>
+            <div class="form-group">
+                <label class="text mt-4" for="phoneNumber">Phone number</label>
+                <input type="text" class="form-control" value="{{Staff.numberPhone}}" id="staffPhoneNumber" name="numberPhone" placeholder="Enter phone number of staff">
+            </div>
+            <div class="form-group">
+                <label class="text mt-4" for="birthDay">Birthday</label>
+                <input type="date" class="form-control form-control-date  " value="{{Staff.birthday}}" id="staffBirthday" name="birthday" placeholder="Enter birthday of staff">
+            </div>
+            <div class="form-group">
+                <label class="text mt-4" for="sex">Sex</label>
+                <input type="text" class="form-control" id="staffSex" value="{{Staff.sex}}" name="sex" placeholder="Enter phone sex of staff">
+            </div>
+             <div class="form-group">
+                <label class="text mt-4" for="address">Address</label>
+                <input type="text" class="form-control" id="staffSex" value="{{Staff.address}}" name="address" placeholder="Enter phone sex of staff">
+            </div>
+            <button type="submit" class="btn btn-primary backgound-color mt-4 text-color">Sửa Nhân Viên</button>
+        </form>
+</div>

@@ -1,0 +1,130 @@
+<div class="mt-4">
+    <div class="row">
+        {{!-- {{#each items}}
+        <div class="col-sm-6 col-lg-4">      
+            <div class="card">
+            <img src="{{this.img}}" class="card-img-top" alt="{{this.name}}">
+            <div class="card-body">
+                <p class="card-text">{{this.name}}</p>
+            </div>
+            <div class="card-body">
+                <p class="price">{{this.price}}</p>
+            </div>
+            </div>
+            
+        </div>
+         {{/each}} --}}
+         <div class="col-3">
+            <div class="row">
+               <div class="container-cate">
+                <div class="cate">
+                 <div class="cate-heading">
+                    <p class="text-big">Danh mục</p>
+                </div>
+                <ul>
+                    <li class="cate-item"><a href="#caffee">Caffee</a></li>
+                    <li class="cate-item"><a href="#juice">Nước ép</a></li>
+                    <li class="cate-item"><a href="#tea">Trà</a></li>
+                    <li class="cate-item"><a href="#yaourt">Sữa chua</a></li>
+                    <li class="cate-item"><a href="#smoothie">Sinh tố</a></li>
+                </ul>
+               </div>
+               </div>
+            </div>
+         </div>
+         <div class="col-9 ">
+            <div class="row">
+            <div id="caffee" class="row">
+                <p class="type-item">Caffee</p>
+            </div>
+            {{#each caffee}}
+                <div class="col-12 col-md-4 col-lg-4 col-xl-3 col-xxl-3 ">      
+                    <div class="card-container">
+                        <div class="card card-img">
+                            <img src="{{this.img}}" class="card-img-top" alt="{{this.name}}">
+                        <div class="card-body card-text">
+                            <p class="card-text text-sm display-center">{{this.name}}</p>
+                        </div>
+                        <div class="card-body card-text">
+                            <p class="price text-sm display-center" style="color: red;">{{this.price}} VND</p>
+                        </div>
+                        </div>
+                    </div>          
+                </div>
+            {{/each}}
+            </div>
+             <div id="juice" class="row mt-4">
+                <p class="type-item">Juice</p>
+            {{#each juice}}
+                <div class="col-12 col-md-4 col-lg-4 col-xl-3 col-xxl-3 ">      
+                    <div class="card-container">
+                        <div class="card card-img">
+                            <img src="{{this.img}}" class="card-img-top" alt="{{this.name}}">
+                        <div class="card-body card-text">
+                            <p class="card-text text-sm display-center">{{this.name}}</p>
+                        </div>
+                        <div class="card-body card-text" >
+                            <p class="price text-sm display-center" style="color: red;">{{this.price}}</p>
+                        </div>
+                        </div>
+                    </div>          
+                </div>
+            {{/each}}
+            </div>
+             <div id="tea" class="row mt-4">
+                <p class="type-item">Tea</p>
+            {{#each tea}}
+                <div class="col-12 col-md-4 col-lg-4 col-xl-3 col-xxl-3 ">      
+                    <div class="card-container">
+                        <div class="card card-img">
+                            <img src="{{this.img}}" class="card-img-top" alt="{{this.name}}">
+                        <div class="card-body card-text">
+                            <p class="card-text text-sm display-center">{{this.name}}</p>
+                        </div>
+                        <div class="card-body card-text" >
+                            <p class="price text-sm display-center" style="color: red;">{{this.price}} VND</p>
+                        </div>
+                        </div>
+                    </div>          
+                </div>
+            {{/each}}
+            </div>
+            <div id="yaourt" class="row mt-4">
+                <p class="type-item">Yaourt</p>
+            {{#each yaourt}}
+                <div class="col-12 col-md-4 col-lg-4 col-xl-3 col-xxl-3 ">      
+                    <div class="card-container">
+                        <div class="card card-img">
+                            <img src="{{this.img}}" class="card-img-top" alt="{{this.name}}">
+                        <div class="card-body card-text">
+                            <p class="card-text text-sm display-center">{{this.name}}</p>
+                        </div>
+                        <div class="card-body card-text" >
+                            <p class="price text-sm display-center" style="color: red;">{{this.price}} VND</p>
+                        </div>
+                        </div>
+                    </div>          
+                </div>
+            {{/each}}
+            </div>
+             <div id="smoothie" class="row mt-4">
+                <p class="type-item">Smoothie</p>
+            {{#each smoothie}}
+                <div class="col-12 col-md-4 col-lg-4 col-xl-3 col-xxl-3 ">      
+                    <div class="card-container">
+                        <div class="card card-img">
+                            <img src="{{this.img}}" class="card-img-top" alt="{{this.name}}">
+                        <div class="card-body card-text">
+                            <p class="card-text text-sm display-center">{{this.name}} VND</p>
+                        </div>
+                        <div class="card-body card-text" >
+                            <p class="price text-sm display-center" style="color: red;">{{this.price}}</p>
+                        </div>
+                        </div>
+                    </div>          
+                </div>
+            {{/each}}
+            </div>
+         </div>
+    </div>
+</div>

@@ -1,0 +1,37 @@
+$bg-color : #df6788;
+$text-color : #3d155e;
+
+// $bg-color :#c29a7b;
+// $text-color:#7c1d21;
+.text-color{
+    color: $text-color;
+}
+.backgound-color{
+    background-color: $bg-color;
+}
+.text {
+    color: $text-color;
+   font-size: 20px; 
+   
+}
+
+.text-big {
+    color: $text-color;
+    font-size: 30px; 
+   
+}
+
+.text-v {
+    color: $text-color;
+    font-size: 25px; 
+}
+.text-sm {
+    color: $text-color;
+    font-size: 14px; 
+}
+
+.display-center {
+    display: flex;
+   justify-content: center;
+   text-align: center;
+}

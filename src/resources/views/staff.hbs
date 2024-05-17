@@ -1,0 +1,62 @@
+<div class="mt-4">
+    <div class="row">
+         <div class="col-3">
+            <div class="row">
+               <div class="container-cate">
+                <div class="cate">
+                 <div class="cate-heading">
+                    <p class="text-big">Danh mục</p>
+                </div>
+                <ul>
+                    <li class="cate-item cate-item-hover">
+                        <a href="/me/stored/staff"><i class="fa-solid fa-cloud-arrow-up"></i>  Đã thuê</a>
+                    </li>
+                    <li class="cate-item cate-item-hover">
+                        <a href="/staff/create"><i class="fa-solid fa-plus"></i>  Thêm</a>
+                    </li>
+                    <li class="cate-item cate-item-hover">
+                        <a href="/me/stored/staff"><i class="fa-solid fa-eraser"></i>  Xóa</a>
+                    </li>
+                    <li class="cate-item cate-item-hover">
+                        <a href="/me/stored/staff"><i class="fa-solid fa-wrench"></i>  Sửa</a>
+                    </li>
+                </ul>
+               </div>
+               </div>
+            </div>
+         </div>
+         <div class="col-9 ">
+            <div class="row">
+            <div id="caffee" class="row">
+                <p class="type-item">LIST STAFFS</p>
+            </div>
+            {{#each staffs}}
+                <div class="col-12 col-md-4 col-lg-4 col-xl-3 col-xxl-3 ">      
+                    <div class="card-container" style="height: auto;">
+                        <div class="card card-img">
+                            <img src="{{this.img}}" class="card-img-top" alt="{{this.name}}">
+                        <div class="card-body card-text">
+                            <p class="card-text text-sm display-center">{{this.name}}</p>
+                        </div>
+                        <div class="card-body card-text">
+                            <p class="card-text text-sm display-center">{{this.email}}</p>
+                        </div>
+                        <div class="card-body card-text">
+                            <p class="card-text text-sm display-center">{{this.numberPhone}}</p>
+                        </div>
+                        <div class="card-body card-text">
+                            <p class="card-text text-sm display-center">{{this.sex}}</p>
+                        </div>
+                        <div class="card-body card-text">
+                            <p class="card-text text-sm display-center">{{this.address}}</p>
+                        </div>
+                        <div class="card-body card-text">
+                            <p class="card-text text-sm display-center">{{this.birthday}}</p>
+                        </div>
+                        </div>
+                    </div>          
+                </div>
+            {{/each}}
+         </div>
+    </div>
+</div>

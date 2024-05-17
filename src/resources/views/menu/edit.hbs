@@ -1,0 +1,23 @@
+<div class="mt-4">
+    <h3 class="text-big display-center">Sửa Món</h3>
+      <form method="POST" action="/Menu/{{item._id}}?_method=PUT">
+            <div class="form-group">
+                <label class="text mt-4 " for="name">Name</label>
+                <input type="text" class="form-control" value="{{item.name}}" id="productName" name="name" placeholder="Enter product name">
+            </div>
+            <div class="form-group">
+                <label class="text mt-4" for="price">Price</label>
+                <input type="text" class="form-control" value="{{item.price}}" id="productPrice" name="price" placeholder="Enter product price">
+            </div>
+            <div class="form-group">
+                <label class="text mt-4" for="img">Image</label>
+                <input type="text" class="form-control" value="{{item.img}}" id="productImg" name="img" placeholder="Enter product Img">
+            </div>
+            <div class="form-group">
+                <label class="text mt-4" for="type">Type</label>
+                <input type="text" class="form-control" value="{{item.type}}" id="productType" name="type" placeholder="Enter product Type">
+            </div>
+            
+            <button type="submit" class="btn btn-primary backgound-color mt-4 text-color">Save</button>
+        </form>
+</div>

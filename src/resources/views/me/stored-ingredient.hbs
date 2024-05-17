@@ -1,0 +1,79 @@
+<div class="mt-4">
+    <div class="container">
+        <h2 class="text-big">Menu</h2>
+        <table class="table">
+        <thead>
+            <tr>
+                <th style="color: #3d155e !important;" class="text-v">STT</th>
+                <th style="color: #3d155e !important;" class="text-v">Name</th>
+                <th style="color: #3d155e !important;" class="text-v">PRICE</th>
+                <th style="color: #3d155e !important;" class="text-v">IMG</th>
+                <th style="color: #3d155e !important;" class="text-v">QUANTITY</th>
+                <th style="color: #3d155e !important;" class="text-v" colspan="2">Address</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            {{#each ingredients}}
+                <tr>
+                    <td style="color: #3d155e !important;" class="text">{{sum @index 1}}</td>
+                    <td style="color: #3d155e !important;" class="text">{{this.name}}</td>
+                    <td style="color: #3d155e !important;" class="text">{{this.price}}</td>
+                    <td style="color: #3d155e !important;" class="text"><img style="width:100px;height:100px" src="{{this.img}}" alt="item"></td>
+                    <td style="color: #3d155e !important;" class="text">{{this.quantity}}</td>
+                    <td>
+                        <button type="button" class="btn  btn-repair"><a href="/ingredient/{{this._id}}/edit" href="">Sửa</a></button>
+                        <button type="button" class="btn btn-delete" data-bs-toggle="modal" data-id="{{this._id}}" data-bs-target="#delete-item-modal">
+                            Xóa
+                        </button>
+                    </td>
+                </tr>
+            {{/each}}
+           
+
+            <div class="modal fade" id="delete-item-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="text-big " id="exampleModalLabel">Xóa ?</h5>
+                        <button type="button" class="btn-close" style="font-size: 20px;" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="text modal-body">
+                        Bạn có chắc chắn muốn xóa sản phẩm này ?
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" id="btn-delete-item" class="btn btn-delete">Xóa</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </tbody>
+        </table>
+    </div>
+</div>
+
+{{!-- delete hidden form --}}
+<form name="delete-item-form" method="POST" ></form>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded',function(){
+        var itemId;
+        var deleteForm=document.forms['delete-item-form'];
+        var btnDeleteItem = document.getElementById('btn-delete-item');
+        
+        //when dialog confirm clicked
+        $('#delete-item-modal').on('show.bs.modal',function(event){
+            var button = $(event.relatedTarget);
+            itemId = button.data('id');
+        })
+
+        //when delete course btn clicked
+        btnDeleteItem.onclick=function(){
+            deleteForm.action ='/ingredient/' +itemId+ '?_method=DELETE';
+            deleteForm.submit();
+        }
+    })
+   
+</script>
