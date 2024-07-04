@@ -5,10 +5,26 @@ const methodOverride = require('method-override')
 const { engine } = require("express-handlebars");
 const app = express()
 const port = 8000
+
+
+
+
+
+
 // tu lam
 const jwt = require('jsonwebtoken');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
+
+
+const session = require('express-session');
+
+app.use(session({
+    secret: 'admin',
+    resave: false,
+    saveUninitialized: true
+}));
+
 // Sử dụng bodyParser và cookieParser middleware
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser()); // Sử dụng cookie-parser middleware
@@ -16,19 +32,6 @@ app.use(cookieParser()); // Sử dụng cookie-parser middleware
 
 
 
-
-
-//login
-//const bcrypt = require("bcrypt");
-
-//use EJS as the view engine
-//app.set('view engine','ejs');
-
-
-
-
-
-const router = require('./routes')
 const db = require('./config/db')
 
 //connect to db 
@@ -58,10 +61,19 @@ app.engine("hbs", engine({
 app.set("view engine", "hbs");
 app.set("views", path.join(__dirname, "resources","views"));
 
-router(app);
+// const router = require('./routes')
+// router(app);
 
-
-
+const adminRouter = require('./routes/admin');
+const userRouter = require('./routes/user');
+const login = require('./routes/login');
+const logout = require('./routes/logout');
+const register = require('./routes/register');
+app.use('/admin', adminRouter);
+app.use('/login', login);
+app.use('/logout', logout);
+app.use('/register', register);
+app.use('/', userRouter);
 
 app.listen(port, () => {
   console.log(`App listening on port ${port}`)

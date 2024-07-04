@@ -27,7 +27,7 @@
                     <td style="color: #3d155e !important;" class="text">{{this.birthday}}</td>
                     <td style="color: #3d155e !important;" class="text">{{this.address}}</td>
                     <td>
-                        <button type="button" class="btn  btn-repair"><a href="/staff/{{this._id}}/edit" href="">Sửa</a></button>
+                        <button type="button" class="btn  btn-repair"><a href="/admin/staff/{{this._id}}/edit" href="">Sửa</a></button>
                         <button type="button" class="btn btn-delete" data-bs-toggle="modal" data-id="{{this._id}}" data-bs-target="#delete-item-modal">
                             Xóa
                         </button>
@@ -76,7 +76,7 @@
 
         //when delete course btn clicked
         btnDeleteItem.onclick=function(){
-            deleteForm.action ='/staff/' +itemId+ '?_method=DELETE';
+            deleteForm.action ='/admin/staff/' +itemId+ '/delete';
             deleteForm.submit();
         }
     })

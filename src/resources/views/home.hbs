@@ -1,4 +1,28 @@
-<div class="mt-4">
+<div class="container mt-4">
+    <div class="row">
+        <div class="container-slide">
+            <a href="" class="icon_left">
+                <i class="fa-solid fa-chevron-left"></i>
+            </a>
+            <div style="display: none;" class="container-slide__img">
+                <img src="/img/slide1.webp" alt="Image 1">
+            </div>
+            <div style="display: none;" class="container-slide__img">
+                <img src="/img/slide2.webp" alt="Image 2">
+            </div>
+            <div style="display: none;" class="container-slide__img">
+                <img src="/img/slide3.webp" alt="Image 3">
+            </div>
+            <div style="display: none;" class="container-slide__img">
+                <img src="/img/slide4.webp" alt="Image 4">
+            </div>
+            <a href="" class="icon_right">
+                <i class="fa-solid fa-chevron-right"></i>
+            </a>
+        </div>
+    </div>
+</div>
+<div class="container mt-4">
     <div class="row">
         {{!-- {{#each items}}
         <div class="col-sm-6 col-lg-4">      
@@ -22,7 +46,7 @@
                     <p class="text-big">Danh mục</p>
                 </div>
                 <ul>
-                    <li class="cate-item"><a href="#caffee">Caffee</a></li>
+                    <li class="cate-item"><a href="#caffee">Coffee</a></li>
                     <li class="cate-item"><a href="#juice">Nước ép</a></li>
                     <li class="cate-item"><a href="#tea">Trà</a></li>
                     <li class="cate-item"><a href="#yaourt">Sữa chua</a></li>
@@ -35,19 +59,19 @@
          <div class="col-9 ">
             <div class="row">
             <div id="caffee" class="row">
-                <p class="type-item">Caffee</p>
+                <p class="type-item">Coffee</p>
             </div>
             {{#each caffee}}
-                <div class="col-12 col-md-4 col-lg-4 col-xl-3 col-xxl-3 ">      
+                <div class="col-6 col-sm-6  col-md-4 col-lg-3">      
                     <div class="card-container">
                         <div class="card card-img">
                             <img src="{{this.img}}" class="card-img-top" alt="{{this.name}}">
+                        </div>
                         <div class="card-body card-text">
                             <p class="card-text text-sm display-center">{{this.name}}</p>
                         </div>
                         <div class="card-body card-text">
                             <p class="price text-sm display-center" style="color: red;">{{this.price}} VND</p>
-                        </div>
                         </div>
                     </div>          
                 </div>
@@ -56,16 +80,16 @@
              <div id="juice" class="row mt-4">
                 <p class="type-item">Juice</p>
             {{#each juice}}
-                <div class="col-12 col-md-4 col-lg-4 col-xl-3 col-xxl-3 ">      
+                <div class="col-6 col-lg-3 col-md-4 col-sm-6">      
                     <div class="card-container">
                         <div class="card card-img">
                             <img src="{{this.img}}" class="card-img-top" alt="{{this.name}}">
+                        </div>
                         <div class="card-body card-text">
                             <p class="card-text text-sm display-center">{{this.name}}</p>
                         </div>
                         <div class="card-body card-text" >
                             <p class="price text-sm display-center" style="color: red;">{{this.price}}</p>
-                        </div>
                         </div>
                     </div>          
                 </div>
@@ -74,16 +98,16 @@
              <div id="tea" class="row mt-4">
                 <p class="type-item">Tea</p>
             {{#each tea}}
-                <div class="col-12 col-md-4 col-lg-4 col-xl-3 col-xxl-3 ">      
+                <div class="col-6 col-lg-3 col-md-4 col-sm-6">      
                     <div class="card-container">
                         <div class="card card-img">
                             <img src="{{this.img}}" class="card-img-top" alt="{{this.name}}">
+                        </div>
                         <div class="card-body card-text">
                             <p class="card-text text-sm display-center">{{this.name}}</p>
                         </div>
                         <div class="card-body card-text" >
                             <p class="price text-sm display-center" style="color: red;">{{this.price}} VND</p>
-                        </div>
                         </div>
                     </div>          
                 </div>
@@ -92,16 +116,16 @@
             <div id="yaourt" class="row mt-4">
                 <p class="type-item">Yaourt</p>
             {{#each yaourt}}
-                <div class="col-12 col-md-4 col-lg-4 col-xl-3 col-xxl-3 ">      
+                <div class="col-6 col-lg-3 col-md-4 col-sm-6">      
                     <div class="card-container">
                         <div class="card card-img">
                             <img src="{{this.img}}" class="card-img-top" alt="{{this.name}}">
+                        </div>
                         <div class="card-body card-text">
                             <p class="card-text text-sm display-center">{{this.name}}</p>
                         </div>
                         <div class="card-body card-text" >
                             <p class="price text-sm display-center" style="color: red;">{{this.price}} VND</p>
-                        </div>
                         </div>
                     </div>          
                 </div>
@@ -110,16 +134,16 @@
              <div id="smoothie" class="row mt-4">
                 <p class="type-item">Smoothie</p>
             {{#each smoothie}}
-                <div class="col-12 col-md-4 col-lg-4 col-xl-3 col-xxl-3 ">      
+                <div class="col-6 col-lg-3 col-md-4 col-sm-6">      
                     <div class="card-container">
                         <div class="card card-img">
                             <img src="{{this.img}}" class="card-img-top" alt="{{this.name}}">
+                        </div>
                         <div class="card-body card-text">
                             <p class="card-text text-sm display-center">{{this.name}} VND</p>
                         </div>
                         <div class="card-body card-text" >
                             <p class="price text-sm display-center" style="color: red;">{{this.price}}</p>
-                        </div>
                         </div>
                     </div>          
                 </div>
@@ -128,3 +152,4 @@
          </div>
     </div>
 </div>
+

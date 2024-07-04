@@ -1,0 +1,220 @@
+
+
+
+
+<div class="container mt-4">
+    <div class="row">
+        <div class="container-slide">
+            <a href="" class="icon_left">
+                <i class="fas fa-chevron-left"></i>
+            </a>
+            <div style="display: none;" class="container-slide__img">
+                <img src="/img/slide1.webp" alt="Image 1">
+            </div>
+            <div style="display: none;" class="container-slide__img">
+                <img src="/img/slide2.webp" alt="Image 2">
+            </div>
+            <div style="display: none;" class="container-slide__img">
+                <img src="/img/slide3.webp" alt="Image 3">
+            </div>
+            <div style="display: none;" class="container-slide__img">
+                <img src="/img/slide4.webp" alt="Image 4">
+            </div>
+            <a href="" class="icon_right">
+                <i class="fas fa-chevron-right"></i>
+            </a>
+        </div>
+    </div>
+</div>
+
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-3">
+            <div class="row">
+                <div class="container-cate">
+                    <div class="cate">
+                        <div class="cate-heading">
+                            <p class="text-big">Danh mục</p>
+                        </div>
+                        <ul>
+                            <li class="cate-item"><a href="#caffee">Coffee</a></li>
+                            <li class="cate-item"><a href="#juice">Nước ép</a></li>
+                            <li class="cate-item"><a href="#tea">Trà</a></li>
+                            <li class="cate-item"><a href="#yaourt">Sữa chua</a></li>
+                            <li class="cate-item"><a href="#smoothie">Sinh tố</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-9">
+            <div id="coffee" class="row mt-4">
+                <p class="type-item">Coffee</p>
+                {{#each caffee}}
+                <div class="col-6 col-lg-3 col-md-4 col-sm-6">
+                    <div class="card-container" data-price="{{this.price}}" data-id="{{this._id}}" data-name="{{this.name}}">
+                        <div class="card card-img">
+                            <img src="{{this.img}}" class="card-img-top" alt="{{this.name}}">
+                        </div>
+                        <div class="card-body card-text">
+                            <p class="card-text text-sm display-center">{{this.name}}</p>
+                        </div>
+                        <div class="card-body card-text">
+                            <p class="price text-sm display-center" style="color: red;">{{this.price}}</p>
+                        </div>
+                        <div class="card-body card__cart">
+                            <i class="fas fa-cart-plus card__cart-icon"></i>
+                            <a href="#" style="color: #FFF;" class="text-sm display-center card__cart-text">Thêm vào giỏ hàng</a>
+                        </div>
+                    </div>
+                </div>
+                {{/each}}
+            </div>
+            <div id="juice" class="row mt-4">
+                <p class="type-item">Juice</p>
+                {{#each juice}}
+                <div class="col-6 col-lg-3 col-md-4 col-sm-6">
+                    <div class="card-container" data-price="{{this.price}}" data-id="{{this._id}}" data-name="{{this.name}}">
+                        <div class="card card-img">
+                            <img src="{{this.img}}" class="card-img-top" alt="{{this.name}}">
+                        </div>
+                        <div class="card-body card-text">
+                            <p class="card-text text-sm display-center">{{this.name}}</p>
+                        </div>
+                        <div class="card-body card-text">
+                            <p class="price text-sm display-center" style="color: red;">{{this.price}}</p>
+                        </div>
+                        <div class="card-body card__cart">
+                            <i class="fas fa-cart-plus card__cart-icon"></i>
+                            <a href="#" style="color: #FFF;" class="text-sm display-center card__cart-text">Thêm vào giỏ hàng</a>
+                        </div>
+                    </div>
+                </div>
+                {{/each}}
+            </div>
+            <div id="tea" class="row mt-4">
+                <p class="type-item">Tea</p>
+                {{#each tea}}
+                <div class="col-6 col-lg-3 col-md-4 col-sm-6">
+                    <div class="card-container" data-price="{{this.price}}" data-id="{{this._id}}" data-name="{{this.name}}">
+                        <div class="card card-img">
+                            <img src="{{this.img}}" class="card-img-top" alt="{{this.name}}">
+                        </div>
+                        <div class="card-body card-text">
+                            <p class="card-text text-sm display-center">{{this.name}}</p>
+                        </div>
+                        <div class="card-body card-text">
+                            <p class="price text-sm display-center" style="color: red;">{{this.price}} VND</p>
+                        </div>
+                        <div class="card-body card__cart">
+                            <i class="fas fa-cart-plus card__cart-icon"></i>
+                            <a href="#" style="color: #FFF;" class="text-sm display-center card__cart-text">Thêm vào giỏ hàng</a>
+                        </div>
+                    </div>
+                </div>
+                {{/each}}
+            </div>
+            <div id="yaourt" class="row mt-4">
+                <p class="type-item">Yaourt</p>
+                {{#each yaourt}}
+                <div class="col-6 col-lg-3 col-md-4 col-sm-6">
+                    <div class="card-container" data-price="{{this.price}}" data-id="{{this._id}}" data-name="{{this.name}}">
+                        <div class="card card-img">
+                            <img src="{{this.img}}" class="card-img-top" alt="{{this.name}}">
+                        </div>
+                        <div class="card-body card-text">
+                            <p class="card-text text-sm display-center">{{this.name}}</p>
+                        </div>
+                        <div class="card-body card-text">
+                            <p class="price text-sm display-center" style="color: red;">{{this.price}} VND</p>
+                        </div>
+                        <div class="card-body card__cart">
+                            <i class="fas fa-cart-plus card__cart-icon"></i>
+                            <a href="#" style="color: #FFF;" class="text-sm display-center card__cart-text">Thêm vào giỏ hàng</a>
+                        </div>
+                    </div>
+                </div>
+                {{/each}}
+            </div>
+            <div id="smoothie" class="row mt-4">
+                <p class="type-item">Smoothie</p>
+                {{#each smoothie}}
+                <div class="col-6 col-lg-3 col-md-4 col-sm-6">
+                    <div class="card-container" data-price="{{this.price}}" data-id="{{this._id}}" data-name="{{this.name}}">
+                        <div class="card card-img">
+                            <img src="{{this.img}}" class="card-img-top" alt="{{this.name}}">
+                        </div>
+                        <div class="card-body card-text">
+                            <p class="card-text text-sm display-center">{{this.name}}</p>
+                        </div>
+                        <div class="card-body card-text">
+                            <p class="price text-sm display-center" style="color: red;">{{this.price}} VND</p>
+                        </div>
+                        <div class="card-body card__cart">
+                            <i class="fas fa-cart-plus card__cart-icon"></i>
+                            <a href="#" style="color: #FFF;" class="text-sm display-center card__cart-text">Thêm vào giỏ hàng</a>
+                        </div>
+                    </div>
+                </div>
+                {{/each}}
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div id="cartModal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <div class="form-group text-center">
+      <img id="productImage" src="" alt="Product Image" style="max-width: 100%; height: auto;">
+    </div>
+    <div class="form-group text-center">
+      <p id="productName" class="text-color" style="max-width: 100%; height: auto;"></p>
+    </div>
+    <form id="addToCartForm">
+      
+      <div class="form-group">
+        <label class="text" for="size">Size:</label><br>
+        <input type="radio" id="sizeM" name="size[]" value="M">
+        <label class="text" for="sizeM"> M</label><br>
+        <input type="radio" id="sizeL" name="size[]" value="L">
+        <label class="text" for="sizeL"> L</label><br>
+        <input type="radio" id="sizeXL" name="size[]" value="XL">
+        <label class="text" for="sizeXL"> XL</label><br>
+      </div>
+      <div class="form-group">
+        <label class="text" for="sugar">Độ ngọt:</label><br>
+        <input type="radio" id="sugar0" name="sugar" value="0">
+        <label class="text" for="sugar0"> 0%</label><br>
+        <input type="radio" id="sugar50" name="sugar" value="50">
+        <label class="text" for="sugar50"> 50%</label><br>
+        <input type="radio" id="sugar100" name="sugar" value="100">
+        <label class="text" for="sugar100"> 100%</label><br>
+      </div>
+      <div class="form-group">
+        <label class="text" for="ice">Đá:</label><br>
+        <input type="radio" id="iceYes" name="ice" value="Có">
+        <label class="text" for="iceYes"> Có</label><br>
+        <input type="radio" id="iceNo" name="ice" value="Không">
+        <label class="text" for="iceNo"> Không</label><br>
+      </div>
+      <div class="form-group">
+        <label class="text" for="description">Mô tả:</label>
+        <textarea id="description" name="description" class="form-control" required></textarea>
+      </div>
+      <div class="footer__modal">
+        <div class="form-group">
+            <div class="quantity-control">
+                <button type="button" class="btn-decrease footer__modal-btn">-</button>
+                <input type="number" id="quantity" name="quantity" class="form-control" value="1" min="1" required>
+                <button type="button" class="btn-increase footer__modal-btn">+</button>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary footer__modal-btn--submit">Thêm vào giỏ hàng</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+

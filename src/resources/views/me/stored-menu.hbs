@@ -20,7 +20,7 @@
                     <td style="color: #3d155e !important;" class="text"><img style="width:100px;height:100px" src="{{this.img}}" alt="item"></td>
                     <td style="color: #3d155e !important;" class="text">{{this.type}}</td>
                     <td>
-                        <button type="button" class="btn  btn-repair"><a href="/menu/{{this._id}}/edit" href="">Sửa</a></button>
+                        <button type="button" class="btn  btn-repair"><a href="/admin/menu/{{this._id}}/edit" href="">Sửa</a></button>
                         {{!-- <button type="button" class="btn  btn-delete"><a href="">Xóa</a></button> --}}
                         {{!-- <a href="" class="btn btn-link btn-delete" data-toggle="modal" data-id="{{this._id}}" data-target="#delete-item-modal">Xóa</a> --}}
                         <button type="button" class="btn btn-delete" data-bs-toggle="modal" data-id="{{this._id}}" data-bs-target="#delete-item-modal">
@@ -71,7 +71,7 @@
 
         //when delete course btn clicked
         btnDeleteItem.onclick=function(){
-            deleteForm.action ='/Menu/' +itemId+ '?_method=DELETE';
+            deleteForm.action ='/admin/Menu/' +itemId+ '/delete';
             deleteForm.submit();
         }
     })
