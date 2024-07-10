@@ -1,35 +1,3 @@
-{{!-- <header>
-  <div class="header">
-    <div class="logo me-4">
-      <a href="/">
-        <img src="http://localhost:8000/img/log1.png" alt="logo" class="img-logo">
-      </a>
-    </div>
-    <div class="cotainer-menu">
-      <div>
-        <ul class="nav">
-          <li class="nav-item ms-5 me-5">
-            <a class="nav-link text " aria-current="page" href="/menu/" ><i class="fa-solid fa-house"></i> Thực đơn</a>
-          </li>
-        </ul>
-      </div>
-      <div class="nav container-user">
-        <div class="container-user__cart">
-          <i class="fa-solid fa-cart-shopping"></i>
-        </div>
-         <div style="display: flex;" class="container-user__acount">
-            <a class="nav-link text " href="#"><img src="http://localhost:8000/img/avatar.jpg" alt="" class="user-avatar">Thanh Hậu</a>
-            <div class="container-user--logout">
-                <a href="/logout">
-                  <i class="fa-solid fa-arrow-right-from-bracket"></i>
-                </a>
-            </div>
-         </div>
-      </div>
-     
-  </div>
-</header>
- --}}
 <header>
   <div class="header">
     <div class="logo me-4">
@@ -41,26 +9,77 @@
       <div>
         <ul class="nav">
           <li class="nav-item ms-5 me-5">
-            <a class="nav-link text " aria-current="page" href="/menu/" ><i class="fa-solid fa-house"></i> Thực đơn</a>
+            <a class="nav-link text " aria-current="page" href="/menu/"><i class="fa-solid fa-house"></i> Thực đơn</a>
           </li>
         </ul>
       </div>
       <div class="nav container-user">
-        <div class="container-user__cart">
-          <i class="fa-solid fa-cart-shopping" id="cartIcon"></i>
-          <div id="cartItemsContainer" style="display: none;">
-            <!-- Sản phẩm trong giỏ hàng sẽ được load vào đây -->
+        {{#if isMenu}}
+          <div class="header__cart">
+            <div class="header__cart-wrap">
+              <i class="header__cart-icon fa-solid fa-cart-shopping"></i>
+              <span class="header__cart-notice" id="cart-notice">{{ items.length }}</span>
+              <div class="header__cart-list">
+                <h4 class="header__cart-list-heading">Sản phẩm đã thêm</h4>
+                <ul class="header__cart-list-item">
+                  {{#each items }}
+                    <li class="header__cart-item" data-id="{{this._id}}">
+                      <img src="{{ this.image }}" alt="" class="header__cart-img">
+                      <div class="header__cart-item-info">
+                        <div class="header__cart-item-head">
+                          <h5 class="header__cart-item-name">{{ this.name }}</h5>
+                          <div class="header__cart-item-price-wrap">
+                            <span class="header__cart-item-price">{{ formatPrice this.totalPrice }}</span>
+                            <span class="header__cart-item-multipl">x</span>
+                            <span class="header__cart-item-qnt">{{ this.quantity }}</span>
+                          </div>
+                        </div>
+                        <div class="header__cart-item-body">
+                          <span class="header__cart-item-size">Size: {{ this.size }}</span>
+                          <span class="header__cart-item-ice">Đá: {{ this.ice }}</span>
+                          <span class="header__cart-item-sugar">Đường: {{ this.sugar }}%</span>
+                        </div>
+                        <div class="header__cart-item-body">
+                          <span class="header__cart-item-descriptoion">Mô tả: {{ this.description }}</span>
+                          <span class="header__cart-item-remove">
+                            <a href="#" class="delete-link" data-id="{{this._id}}">Xóa</a>
+                          </span>
+                        </div>
+                        
+                      </div>
+                    </li>
+                  {{/each}}
+                </ul>
+                <div class="cart__footer">
+                  <div class="numberTable" style="margin-left:10px">
+                    Nhập số bàn :<input type="number" id="numTable" required>
+                  </div>
+                  <a href="#" class="header__cart-view-cart btn btn--primary" id="placeOrderBtn">Đặt hàng</a>
+                </div>
+                <div class="header__cart-item-body display-center backgound-color text" >
+                    <span>Tổng số tiền: {{formatPrice (totalPrice items)}}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        {{else}}
+        {{/if}}
+        <div style="display: flex;" class="container-user__acount">
+          <a class="nav-link text " href="#"><img src="http://localhost:8000/img/avatar.jpg" alt="" class="user-avatar">
+            {{#if username}}
+              {{username}}
+            {{else}}
+              <a href="/login">Đăng nhập</a>
+            {{/if}}
+          </a>
+          <div class="container-user--logout">
+            <a href="/logout">
+              <i class="fa-solid fa-arrow-right-from-bracket"></i>
+            </a>
           </div>
         </div>
-         <div style="display: flex;" class="container-user__acount">
-            <a class="nav-link text " href="#"><img src="http://localhost:8000/img/avatar.jpg" alt="" class="user-avatar">Thanh Hậu</a>
-            <div class="container-user--logout">
-                <a href="/logout">
-                  <i class="fa-solid fa-arrow-right-from-bracket"></i>
-                </a>
-            </div>
-         </div>
       </div>
     </div>
   </div>
 </header>
+

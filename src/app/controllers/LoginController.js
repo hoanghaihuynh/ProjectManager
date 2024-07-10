@@ -39,6 +39,7 @@ class LoginController {
                         }
                          // Lưu _id của người dùng vào session
                         req.session.userId = user._id;
+                        req.session.name = user.name;
                         if (user.role === 'admin') {
                             const token = jwt.sign({ username, role: user.role }, secretKey);
                             res.cookie('token', token);

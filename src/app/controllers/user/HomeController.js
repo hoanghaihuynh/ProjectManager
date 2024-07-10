@@ -4,7 +4,7 @@ const { mutipleMongooseToObject }=require('../../../util/mongoose')
 class HomeController {
     //[GET] /
     index(req,res){
-        res.render('user/home', { layout: 'mainUser.hbs' });
+        res.render('user/home', { layout: 'mainUser.hbs'});
     }
 }
 

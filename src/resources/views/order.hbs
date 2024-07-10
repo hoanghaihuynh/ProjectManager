@@ -1,0 +1,157 @@
+<!-- Đoạn mã để hiển thị danh sách các đơn hàng -->
+{{!-- <ul class="list-unstyled">
+    {{#each orders}}
+        <li class="my-4">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="card-title">Thông tin đơn hàng</h5>
+                </div>
+                <div class="card-body">
+                    <table class="table table-bordered table-sm order-table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Ngày đặt hàng</th>
+                                <th scope="col">Người đặt hàng</th>
+                                <th scope="col">Tổng tiền</th>
+                                <th scope="col">Số lượng sản phẩm</th>
+                                <th scope="col">Bàn số</th>
+                                <th scope="col">Trạng thái</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>{{ createdAt }}</td>
+                                <td>{{ userId }}</td>
+                                <td>{{ formatPrice totalPrice }}</td>
+                                <td>{{ totalQuantity }}</td>
+                                <td>{{ numTable }}</td>
+                                <td>{{ status }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <h6 class="card-subtitle mb-2 text-muted mt-4">Chi tiết đơn hàng:</h6>
+                    <table class="table table-bordered table-sm detail-table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Tên sản phẩm</th>
+                                <th scope="col">Ảnh sản phẩm</th>
+                                <th scope="col">Giá sản phẩm</th>
+                                <th scope="col">Số lượng</th>
+                                <th scope="col">Kích cỡ</th>
+                                <th scope="col">Đường</th>
+                                <th scope="col">Đá</th>
+                                <th scope="col">Mô tả</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{#each items}}
+                                <tr>
+                                    <td>{{ name }}</td>
+                                    <td><img src="{{ image }}" alt="{{ name }}" class="img-fluid"></td>
+                                    <td>{{ formatPrice priceItem }}</td>
+                                    <td>{{ quantity }}</td>
+                                    <td>{{ size }}</td>
+                                    <td>{{ sugar }}</td>
+                                    <td>{{ ice }}</td>
+                                    <td>{{ description }}</td>
+                                </tr>
+                            {{/each}}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </li>
+    {{/each}}
+</ul> --}}
+<ul class="list-unstyled">
+    {{#each orders}}
+        <li class="my-4 {{#if viewed}}viewed{{else}}not-viewed{{/if}}" id="order-{{this._id}}">
+            <div class="card">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h5 class="card-title mb-0">Thông tin đơn hàng</h5>
+                    {{#unless viewed}}
+                        <button class="btn btn-primary btn-sm" onclick="markAsViewed('{{this._id}}')">Đánh dấu đã xem</button>
+                    {{/unless}}
+                </div>
+                <div class="card-body">
+                    <table class="table table-bordered table-sm order-table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Ngày đặt hàng</th>
+                                <th scope="col">Người đặt hàng</th>
+                                <th scope="col">Tổng tiền</th>
+                                <th scope="col">Số lượng sản phẩm</th>
+                                <th scope="col">Bàn số</th>
+                                <th scope="col">Trạng thái</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>{{formatDate createdAt}}</td>
+                                <td>{{ userId }}</td>
+                                <td>{{ formatPrice totalPrice }}</td>
+                                <td>{{ totalQuantity }}</td>
+                                <td>{{ numTable }}</td>
+                                <td>{{ status }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <h6 class="card-subtitle mb-2 text-muted mt-4">Chi tiết đơn hàng:</h6>
+                    <table class="table table-bordered table-sm detail-table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Tên sản phẩm</th>
+                                <th scope="col">Ảnh sản phẩm</th>
+                                <th scope="col">Giá sản phẩm</th>
+                                <th scope="col">Số lượng</th>
+                                <th scope="col">Kích cỡ</th>
+                                <th scope="col">Đường</th>
+                                <th scope="col">Đá</th>
+                                <th scope="col">Mô tả</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{#each items}}
+                                <tr>
+                                    <td>{{ name }}</td>
+                                    <td><img src="{{ image }}" alt="{{ name }}" class="img-fluid"></td>
+                                    <td>{{ formatPrice priceItem }}</td>
+                                    <td>{{ quantity }}</td>
+                                    <td>{{ size }}</td>
+                                    <td>{{ sugar }}</td>
+                                    <td>{{ ice }}</td>
+                                    <td>{{ description }}</td>
+                                </tr>
+                            {{/each}}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </li>
+    {{/each}}
+</ul>
+<style>
+.order-table, .detail-table {
+    font-size: 20px;
+}
+
+.order-table th, .order-table td, .detail-table th, .detail-table td {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.order-table img, .detail-table img {
+    max-width: 100px;
+    height: auto;
+}
+.not-viewed {
+    background-color: yellow;
+    padding: 10px; 
+}
+
+.viewed {
+    background-color: white;
+}
+
+</style>
