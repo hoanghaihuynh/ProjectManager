@@ -15,15 +15,19 @@
             </div>
             <div class="form-group">
                 <label class="text mt-4" for="type">Phone number</label>
-                <input type="text" class="form-control" id="staffPhoneNumber" name="numberPhone" placeholder="Enter phone number of staff">
+                <input type="number" class="form-control" id="staffPhoneNumber" name="numberPhone" placeholder="Enter phone number of staff">
             </div>
             <div class="form-group">
                 <label class="text mt-4" for="type">Birthday</label>
-                <input type="date" class="form-control form-control-date  " id="staffBirthday" name="birthday" placeholder="Enter birthday of staff">
+                <input style="width:200px" type="date" class="form-control form-control-date  " id="staffBirthday" name="birthday" placeholder="Enter birthday of staff">
             </div>
             <div class="form-group">
                 <label class="text mt-4" for="type">Sex</label>
-                <input type="text" class="form-control" id="staffSex" name="sex" placeholder="Enter phone sex of staff">
+                <select style="width:200px" class="form-control" id="staffSex" name="sex">
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="other">Other</option>
+                </select>
             </div>
              <div class="form-group">
                 <label class="text mt-4" for="type">Address</label>
@@ -32,3 +36,6 @@
             <button type="submit" class="btn btn-primary backgound-color mt-4 text-color">Thêm Nhân Viên</button>
         </form>
 </div>
+<script>
+    document.getElementById('staffSex').value = "{{Staff.sex}}";
+</script>

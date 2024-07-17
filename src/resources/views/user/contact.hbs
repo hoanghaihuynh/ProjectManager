@@ -1,0 +1,100 @@
+ <div id="contact" class="content-section">
+    <h2 class="section-heading">CONTACT</h2>
+    <p class="section-sub-heading">Những đóng góp của bạn là sự phát triển của EAVES , cảm ơn bạn rất nhiều !</p> 
+
+    <div class="row contact-content">
+        <div class="col col-half s-col-full contact-info">
+            <p><i class="fa-sharp fa-solid fa-location-dot"></i>EAVES COFFEE, số 2 Phạm Nhữ Tăng ,P4 ,Q8</p>
+            <p><i class="fa-solid fa-phone"></i>Phone: 0327786217</p>
+            <p><i class="fa-regular fa-envelope"></i>Email: eaves@gmail.com</p>
+        </div>
+        <div class="col col-half s-col-full contact-form">
+            <form action="/contact" method="POST" onsubmit="showSuccessAlert()">
+                <div class="row" style="margin-bottom: 10px;">
+                    <div class="col col-half s-col-full">
+                        <input type="text" name="name" required placeholder="Name" id="" class="form-control">
+                    </div>
+                    <div class="col col-half s-col-full s-mt-16">
+                        <input type="email" name="email" required placeholder="Email" id="" class="form-control">
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div class="row mt-8">
+                    <div class="col col-full">
+                        <input type="text" name="message" required placeholder="Message" id="" class="form-control">
+                    </div>
+                </div>
+                <input class="btn-submit btn pull-right mt-16 s-full-width" type="submit" value="SEND">
+            </form>
+        </div>
+    </div>
+</div>
+<script>
+    function showSuccessAlert() {
+        alert('Thông tin liên hệ đã được gửi thành công.');
+    }
+</script>
+
+<style>
+.content-section {
+    width:800px;
+    max-width: 100%;
+    padding: 64px 0 112px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 16px;
+    padding-right: 16px;
+}
+
+.section-heading {
+    font-size: 30px;
+    font-weight: 500px;
+    text-align: center;
+    letter-spacing: 4px;
+}
+
+.section-sub-heading {
+    margin-top: 25px;
+    font-size: 15px;
+    text-align: center;
+    font-style: italic;
+    opacity: 0.6;
+}
+    /* ConTact */
+.contact-content {
+    margin-top: 48px;
+}
+
+.contact-info {
+    font-size: 18px;
+    line-height: 1.5;
+}
+
+.contact-info p{
+   margin-bottom: 8px;
+   font-size: 16px;
+}
+
+.contact-info i[class*="fa-"] {
+    width: 30px;
+    display: inline-block;
+}
+
+.contact-form {
+    font-size: 15px;
+}
+
+.contact-form .form-control {
+    padding: 10px;
+    border: 1px solid #ccc;
+    width: 100%;
+}
+
+.btn-submit {
+    background-color: black;
+    color: white;
+    margin-top: 10px;
+    float: right;
+}
+</style>
+

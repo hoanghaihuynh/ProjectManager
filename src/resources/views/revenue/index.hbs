@@ -1,0 +1,144 @@
+{{!-- <div>
+    <h1 class=" text-big display-center mt-4">Thống kê doanh thu</h1>
+
+    <div style="display: flex;">
+        <h2 class="text-v ">Tổng doanh thu : </h2>
+        <p style="color: red;font-size:25px">{{totalRevenue}} VND</p>
+    </div>
+
+    <div>
+        <h2 class="text-v">Lọc doanh thu theo khoảng thời gian</h2>
+        <form action="/admin/revenue/" method="get">
+            <label class="text" for="startDate">Ngày bắt đầu:</label>
+            <input class="text" type="date" id="startDate" name="startDate" value="{{startDate}}" required>
+            <label class="text" for="endDate">Ngày kết thúc:</label>
+            <input class="text" type="date" id="endDate" name="endDate" value="{{endDate}}" required>
+            <button class="text" type="submit">Tính toán</button>
+        </form>
+        <div style="display: flex;">
+            <h2 class="text">Tổng doanh thu : </h2>
+            <p class="text" style="color: red;">{{dateRangeRevenue}} VND</p>
+        </div>
+    </div>
+</div> --}}
+{{!-- <div>
+    <h1>Revenue Management</h1>
+    <div>
+        <h2>Total Revenue</h2>
+        <p>{{totalRevenue}}</p>
+    </div>
+    <div>
+         <form action="/admin/revenue/" method="get">
+            <label class="text" for="startDate">Ngày bắt đầu:</label>
+            <input class="text" type="date" id="startDate" name="startDate" value="{{startDate}}" required>
+            <label class="text" for="endDate">Ngày kết thúc:</label>
+            <input class="text" type="date" id="endDate" name="endDate" value="{{endDate}}" required>
+            <button class="text" type="submit">Tính toán</button>
+        </form>
+        <h2>Revenue from{{#if startDate}} {{startDate}} {{else}}____ {{/if}}to {{#if endDate}} {{endDate}} {{else}}____ {{/if}}</h2>
+        <p>{{dateRangeRevenue}}</p>
+    </div>
+    <div>
+        <h2>Daily Revenue</h2>
+        <p>{{dailyRevenue}}</p>
+    </div>
+    <div>
+        <h2>Weekly Revenue</h2>
+        <p>{{weeklyRevenue}}</p>
+    </div>
+    <div>
+        <h2>Monthly Revenue</h2>
+        <p>{{monthlyRevenue}}</p>
+    </div>
+    <div>
+        <h2>Top Selling Products</h2>
+        <ul>
+            {{#each topSellingProducts}}
+                <li>{{this.name}} - {{this.quantity}} sold</li>
+            {{/each}}
+        </ul>
+    </div>
+</div> --}}
+<div class="revenue">
+    <h1 class="revenue__title display-center">Báo cáo danh số</h1>
+    <div class="revenue__total">
+        <h2 class="revenue__total-title text-big">Tổng doanh thu : </h2>
+        <p class="revenue__total-result text-big">{{totalRevenue}} VND </p>
+    </div>
+    <div class="revenue__total">
+        <h2 class="revenue__total-title text-big">Doanh thu theo ngày : </h2>
+        <p class="revenue__total-result text-big">{{dailyRevenue}} VND </p>
+    </div>
+    <div class="revenue__total">
+        <h2 class="revenue__total-title text-big">Doanh thu theo tuần : </h2>
+        <p class="revenue__total-result text-big">{{weeklyRevenue}} VND </p>
+    </div>
+    <div class="revenue__total">
+        <h2 class="revenue__total-title text-big">Doanh thu theo tháng : </h2>
+        <p class="revenue__total-result text-big">{{monthlyRevenue}} VND </p>
+    </div>
+    <div class="revenue_advance">
+        <h2 class="revenue__total-title text-big display-center">Tìm kiếm nâng cao : </h2>
+         <form action="/admin/revenue/" method="get">
+            <label class="text" for="startDate">Ngày bắt đầu:</label>
+            <input class="text" type="date" id="startDate" name="startDate" value="{{startDate}}" required>
+            <label class="text" for="endDate">Ngày kết thúc:</label>
+            <input class="text" type="date" id="endDate" name="endDate" value="{{endDate}}" required>
+            <button class="text" type="submit">Tính toán</button>
+        </form>
+        <div class="revenue_advance-result">
+            <h2 class="text">Revenue from{{#if startDate}} {{startDate}} {{else}}____ {{/if}}to {{#if endDate}} {{endDate}} {{else}}____ {{/if}} : </h2>
+            <p class="text">{{dateRangeRevenue}}</p>
+        </div>
+    </div>
+    <ul class="topProduct ">
+        <h2 class="revenue__total-title text-big display-center">Top sản phẩm bán chạy </h2>
+        {{#each topSellingProducts}}
+            <li class="topProduc__item text">{{this.name}} - {{this.quantity}} sold</li>
+        {{/each}}
+    </ul>
+</div>
+
+<style>
+.revenue {
+    margin-top:50px ;
+    padding: 50px;
+    border: 1px solid #333;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+.revenue__total {
+    display: flex;
+}
+
+.revenue__total-result {
+    color: red;
+}
+
+.revenue_advance {
+    margin-top: 10px;
+    padding: 30px;
+    border: 1px solid #333;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.revenue_advance-result {
+    display: flex;
+}
+
+.revenue_advance-result p{
+    margin-left: 20px;
+    color: red;
+}
+.topProduct {
+    margin-top: 10px;
+    padding: 30px;
+    border: 1px solid #333;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+.topProduc__item {
+    list-style-type: none;
+    margin: 10px 0;
+}
+</style>

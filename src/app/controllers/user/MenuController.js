@@ -8,16 +8,16 @@ class UserMenuController {
         const userId = req.session.userId;
     
         Promise.all([
-            menu.find({ type: 'caffee' }),
+            menu.find({ type: 'coffee' }),
             menu.find({ type: 'juice' }),
             menu.find({ type: 'tea' }),
             menu.find({ type: 'yaourt' }),
             menu.find({ type: 'smoothie' }),
             cart.find({ userId: userId })
         ])
-        .then(([caffee, juice, tea, yaourt, smoothie, items]) => {
+        .then(([coffee, juice, tea, yaourt, smoothie, items]) => {
             res.render('user/menu', {
-                caffee: mutipleMongooseToObject(caffee),
+                coffee: mutipleMongooseToObject(coffee),
                 juice: mutipleMongooseToObject(juice),
                 tea: mutipleMongooseToObject(tea),
                 yaourt: mutipleMongooseToObject(yaourt),
@@ -37,7 +37,6 @@ class UserMenuController {
     //[POST] /menu/cart/add
     addCart(req, res) {
         const userId = req.session.userId; 
-        console.log('User ID:', userId);
         const item = new cart(req.body);
         item.userId = userId;
         item.save()

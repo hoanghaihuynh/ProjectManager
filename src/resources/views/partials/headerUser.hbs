@@ -9,7 +9,13 @@
       <div>
         <ul class="nav">
           <li class="nav-item ms-5 me-5">
-            <a class="nav-link text " aria-current="page" href="/menu/"><i class="fa-solid fa-house"></i> Thực đơn</a>
+            <a class="nav-link text " aria-current="page" href="/menu/"><i class="fa-solid fa-house"></i> Menu</a>
+          </li>
+          <li class="nav-item ms-5 me-5">
+            <a class="nav-link text " aria-current="page" href="/menu/"><i class="fa-solid fa-users"></i> About us</a>
+          </li>
+          <li class="nav-item ms-5 me-5">
+            <a class="nav-link text " aria-current="page" href="/contact"><i class="fa-regular fa-message"></i> Contact</a>
           </li>
         </ul>
       </div>
@@ -22,43 +28,47 @@
               <div class="header__cart-list">
                 <h4 class="header__cart-list-heading">Sản phẩm đã thêm</h4>
                 <ul class="header__cart-list-item">
-                  {{#each items }}
-                    <li class="header__cart-item" data-id="{{this._id}}">
-                      <img src="{{ this.image }}" alt="" class="header__cart-img">
-                      <div class="header__cart-item-info">
-                        <div class="header__cart-item-head">
-                          <h5 class="header__cart-item-name">{{ this.name }}</h5>
-                          <div class="header__cart-item-price-wrap">
-                            <span class="header__cart-item-price">{{ formatPrice this.totalPrice }}</span>
-                            <span class="header__cart-item-multipl">x</span>
-                            <span class="header__cart-item-qnt">{{ this.quantity }}</span>
-                          </div>
+                  {{#if items}}
+                      {{#each items }}
+                          <li class="header__cart-item" data-id="{{this._id}}">
+                            <img src="{{ this.image }}" alt="" class="header__cart-img">
+                            <div class="header__cart-item-info">
+                              <div class="header__cart-item-head">
+                                <h5 class="header__cart-item-name">{{ this.name }}</h5>
+                                <div class="header__cart-item-price-wrap">
+                                  <span class="header__cart-item-price">{{ formatPrice this.priceItem }}</span>
+                                  <span class="header__cart-item-multipl">x</span>
+                                  <span class="header__cart-item-qnt">{{ this.quantity }}</span>
+                                </div>
+                              </div>
+                              <div class="header__cart-item-body">
+                                <span class="header__cart-item-size">Size: {{ this.size }}</span>
+                                <span class="header__cart-item-ice">Đá: {{ this.ice }}</span>
+                                <span class="header__cart-item-sugar">Đường: {{ this.sugar }}%</span>
+                              </div>
+                              <div class="header__cart-item-body">
+                                <span class="header__cart-item-description">Mô tả: {{ this.description }}</span>
+                                <span class="header__cart-item-remove">
+                                  <a href="#" class="delete-link" data-id="{{this._id}}">Xóa</a>
+                                </span>
+                              </div>
+                            </div>
+                          </li>
+                        {{/each}}
+                      </ul>
+                      <div class="cart__footer">
+                        <div class="numberTable" style="margin-left:10px">
+                          Nhập số bàn :<input type="number" id="numTable" required>
                         </div>
-                        <div class="header__cart-item-body">
-                          <span class="header__cart-item-size">Size: {{ this.size }}</span>
-                          <span class="header__cart-item-ice">Đá: {{ this.ice }}</span>
-                          <span class="header__cart-item-sugar">Đường: {{ this.sugar }}%</span>
-                        </div>
-                        <div class="header__cart-item-body">
-                          <span class="header__cart-item-descriptoion">Mô tả: {{ this.description }}</span>
-                          <span class="header__cart-item-remove">
-                            <a href="#" class="delete-link" data-id="{{this._id}}">Xóa</a>
-                          </span>
-                        </div>
-                        
+                        <a href="#" class="header__cart-view-cart btn btn--primary" id="placeOrderBtn">Đặt hàng</a>
                       </div>
-                    </li>
-                  {{/each}}
-                </ul>
-                <div class="cart__footer">
-                  <div class="numberTable" style="margin-left:10px">
-                    Nhập số bàn :<input type="number" id="numTable" required>
-                  </div>
-                  <a href="#" class="header__cart-view-cart btn btn--primary" id="placeOrderBtn">Đặt hàng</a>
-                </div>
-                <div class="header__cart-item-body display-center backgound-color text" >
-                    <span>Tổng số tiền: {{formatPrice (totalPrice items)}}</span>
-                </div>
+                      <div class="header__cart-item-body display-center backgound-color text" >
+                          <span>Tổng số tiền: {{formatPrice (totalPrice items)}}</span>
+                      </div>
+                  {{else}}
+                      
+                  {{/if}}
+                  
               </div>
             </div>
           </div>

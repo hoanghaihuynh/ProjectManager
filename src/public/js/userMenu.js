@@ -149,7 +149,6 @@ document.addEventListener('DOMContentLoaded', function() {
       })
       .then(response => {
         if (response.ok) {
-          // Xóa thành công, loại bỏ phần tử khỏi DOM
           if (itemElement) {
             itemElement.remove();
             // Cập nhật lại số lượng sản phẩm
@@ -197,13 +196,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
         const name = nameElement ? nameElement.textContent : '';
         const image = imageElement ? imageElement.getAttribute('src') : '';
-        const priceItem = priceItemElement ? parseFloat(priceItemElement.textContent) : 0;
-        const totalPrice = priceItemElement ? parseFloat(priceItemElement.textContent) : 0;
+        const priceItem = priceItemElement ? parseFloat(priceItemElement.textContent.replace(/[\D]/g, '').replace(/^0+/, '')) : 0;  
         const quantity = quantityElement ? parseInt(quantityElement.textContent) : 0;
         const size = sizeElement ? sizeElement.textContent : '';
         const ice = iceElement ? iceElement.textContent : '';
         const sugar = sugarElement ? sugarElement.textContent : '';
         const description = descriptionElement ? descriptionElement.textContent : '';
+        const totalPrice = priceItem * quantity;
 
         items.push({
           productId,
@@ -219,13 +218,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
       });
 
-      console.log('Sending request to server with data:', {
-        items,
-        totalQuantity: items.reduce((total, item) => total + item.quantity, 0),
-        totalPrice: items.reduce((total, item) => total + item.totalPrice, 0),
-        numTable
-      });
-
+      // Gửi yêu cầu POST tới server
       fetch('/order/add', {
         method: 'POST',
         headers: {
@@ -245,9 +238,7 @@ document.addEventListener('DOMContentLoaded', function() {
         return response.json();
       })
       .then(data => {
-        console.log('Đặt hàng thành công:', data); // Log dữ liệu phản hồi từ máy chủ
         alert('Đặt hàng thành công!');
-
         // Xóa các mục trong giỏ hàng ngay trên client-side
         cartItems.forEach(item => {
           item.remove();
@@ -259,16 +250,14 @@ document.addEventListener('DOMContentLoaded', function() {
           cartNotice.textContent = '0';
         }
 
-        // Làm mới trang để cập nhật trạng thái giỏ hàng
         window.location.reload();
       })
       .catch(error => {
-        console.error('Lỗi khi đặt hàng:', error); // Log lỗi khi gặp lỗi trong quá trình gửi yêu cầu
+        console.error('Lỗi khi đặt hàng:', error); 
         alert('Có lỗi xảy ra khi đặt hàng. Vui lòng thử lại.');
       });
     });
   }
 });
-
 
 
