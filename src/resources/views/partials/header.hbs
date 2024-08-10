@@ -1,4 +1,4 @@
-<header>
+<header style="margin-bottom:100px">
   <div class="header">
     <div class="logo me-4">
       <a href="/admin/">
@@ -8,10 +8,10 @@
     <div class="cotainer-menu">
       <div>
         <ul class="nav">
-          <li class="nav-item ms-5 me-5">
+          <li class="nav-item ms-1 me-1">
             <a class="nav-link text " aria-current="page" href="/admin/" >    <i class="fa-solid fa-house"></i>  Home</a>
           </li>
-          <li class="nav-item nav-item-menu ms-5 me-5">
+          <li class="nav-item nav-item-menu ms-1 me-1">
               <a class="nav-link text " href="/admin/"><i class="fa-solid fa-book-open"></i>  Menu</a>      
             <div class="nav-item-icon">
               <i class="fa-solid fa-chevron-down"></i>
@@ -35,19 +35,43 @@
               </li> 
             </ul>
           </li>
-          <li class="nav-item ms-5 me-5">
+          <li class="nav-item ms-1 me-1">
             <a class="nav-link text " href="/admin/staff"><i class="fa-solid fa-user-tie"></i>  Staff</a>
           </li>
-          <li class="nav-item ms-5 me-5">
+          <li class="nav-item ms-1 me-1">
             <a class="nav-link text " href="/admin/ingredient"><i class="fa-solid fa-box-open"></i>  Ingredient</a>
           </li>
-          <li class="nav-item ms-5 me-5" style="position: relative;">
+          <li class="nav-item ms-1 me-1" style="position: relative;">
             <a class="nav-link text" href="/order"><i class="fa-solid fa-paperclip"></i>Oder</a>
             <span class="header__cart-notice" id="orderMenuCounter">0</span>
             <audio id="notification-sound" src="/mp3/soundOrder.mp3"></audio>
           </li>
-          <li class="nav-item ms-5 me-5">
+          <li class="nav-item ms-1 me-1">
             <a class="nav-link text " href="/admin/revenue"><i class="fa-solid fa-chart-simple"></i>  Revenue</a>
+          </li>
+          <li class="nav-item nav-item-menu ms-1 me-1">
+              <a class="nav-link text " href="/admin/voucher"><i class="fa-solid fa-ticket"></i>  Voucher</a>      
+            <div class="nav-item-icon">
+              <i class="fa-solid fa-chevron-down"></i>
+            </div>
+            <ul class="nav-menu">
+              <li class="nav-menu-item">
+                <i class="fa-solid fa-cloud-arrow-up"></i>
+                <a href="/admin/voucher">Đã đăng</a> 
+              </li>
+              <li class="nav-menu-item">
+                <i class="fa-solid fa-plus"></i>
+                <a href="/admin/voucher/create">Thêm</a>
+              </li>
+              <li class="nav-menu-item">
+                <i class="fa-solid fa-eraser"></i>
+                <a href="/admin/me/stored/voucher">Xóa</a>
+              </li>
+              <li class="nav-menu-item">
+                <i class="fa-solid fa-wrench"></i>
+                <a href="/admin/me/stored/voucher">Sửa</a>
+              </li> 
+            </ul>
           </li>
         </ul>
       </div>
@@ -56,7 +80,7 @@
             {{#if username}}
                   {{username}}
               {{else}}
-                  <a href="/login">Đăng nhập</a>
+                  <a style="display: flex;align-items: center;margin-right: 10px;" href="/login">Đăng nhập</a>
               {{/if}}
          </a>
           <div class="container-user--logout">
@@ -66,6 +90,10 @@
           </div>
       </div>
      
+  </div>
+  {{!-- navi-bar  --}}
+  <div style="display: none;" class="navigation-bar">
+      <img src="img/Hamburger_icon.svg.png" alt="">
   </div>
 </header>
 

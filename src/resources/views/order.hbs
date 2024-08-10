@@ -1,68 +1,3 @@
-<!-- Đoạn mã để hiển thị danh sách các đơn hàng -->
-{{!-- <ul class="list-unstyled">
-    {{#each orders}}
-        <li class="my-4">
-            <div class="card">
-                <div class="card-header">
-                    <h5 class="card-title">Thông tin đơn hàng</h5>
-                </div>
-                <div class="card-body">
-                    <table class="table table-bordered table-sm order-table">
-                        <thead>
-                            <tr>
-                                <th scope="col">Ngày đặt hàng</th>
-                                <th scope="col">Người đặt hàng</th>
-                                <th scope="col">Tổng tiền</th>
-                                <th scope="col">Số lượng sản phẩm</th>
-                                <th scope="col">Bàn số</th>
-                                <th scope="col">Trạng thái</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>{{ createdAt }}</td>
-                                <td>{{ userId }}</td>
-                                <td>{{ formatPrice totalPrice }}</td>
-                                <td>{{ totalQuantity }}</td>
-                                <td>{{ numTable }}</td>
-                                <td>{{ status }}</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <h6 class="card-subtitle mb-2 text-muted mt-4">Chi tiết đơn hàng:</h6>
-                    <table class="table table-bordered table-sm detail-table">
-                        <thead>
-                            <tr>
-                                <th scope="col">Tên sản phẩm</th>
-                                <th scope="col">Ảnh sản phẩm</th>
-                                <th scope="col">Giá sản phẩm</th>
-                                <th scope="col">Số lượng</th>
-                                <th scope="col">Kích cỡ</th>
-                                <th scope="col">Đường</th>
-                                <th scope="col">Đá</th>
-                                <th scope="col">Mô tả</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {{#each items}}
-                                <tr>
-                                    <td>{{ name }}</td>
-                                    <td><img src="{{ image }}" alt="{{ name }}" class="img-fluid"></td>
-                                    <td>{{ formatPrice priceItem }}</td>
-                                    <td>{{ quantity }}</td>
-                                    <td>{{ size }}</td>
-                                    <td>{{ sugar }}</td>
-                                    <td>{{ ice }}</td>
-                                    <td>{{ description }}</td>
-                                </tr>
-                            {{/each}}
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </li>
-    {{/each}}
-</ul> --}}
 <ul class="list-unstyled">
     {{#each orders}}
         <li class="my-4 {{#if viewed}}viewed{{else}}not-viewed{{/if}}" id="order-{{this._id}}">
@@ -74,35 +9,53 @@
                     {{/unless}}
                 </div>
                 <div class="card-body">
-                    <table class="table table-bordered table-sm order-table">
-                        <thead>
-                            <tr>
-                                <th scope="col">Ngày đặt hàng</th>
-                                <th scope="col">Người đặt hàng</th>
-                                <th scope="col">Tổng tiền</th>
-                                <th scope="col">Số lượng sản phẩm</th>
-                                <th scope="col">Bàn số</th>
-                                <th scope="col">Trạng thái</th>
-                            </tr>
-                        </thead>
+                    <table class="table table-sm order-table mb-3">
                         <tbody>
                             <tr>
+                                <th scope="row">Ngày đặt hàng</th>
                                 <td>{{formatDate createdAt}}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Người đặt hàng</th>
                                 <td>{{ userId }}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Tổng tiền</th>
                                 <td>{{ formatPrice totalPrice }}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Số lượng sản phẩm</th>
                                 <td>{{ totalQuantity }}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Bàn số</th>
                                 <td>{{ numTable }}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Trạng thái</th>
                                 <td>{{ status }}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Mã Voucher</th>
+                                <td>{{ voucherCode }}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Loại giảm giá</th>
+                                <td>{{ discountType }}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Giá trị giảm giá</th>
+                                <td>{{ discountValue }}</td>
                             </tr>
                         </tbody>
                     </table>
-                    <h6 class="card-subtitle mb-2 text-muted mt-4">Chi tiết đơn hàng:</h6>
-                    <table class="table table-bordered table-sm detail-table">
+                    <h6 class="card-subtitle mb-2 text-muted">Chi tiết đơn hàng:</h6>
+                    <table class="table table-sm detail-table">
                         <thead>
                             <tr>
                                 <th scope="col">Tên sản phẩm</th>
-                                <th scope="col">Ảnh sản phẩm</th>
-                                <th scope="col">Giá sản phẩm</th>
+                                <th scope="col">Ảnh</th>
+                                <th scope="col">Giá</th>
                                 <th scope="col">Số lượng</th>
                                 <th scope="col">Kích cỡ</th>
                                 <th scope="col">Đường</th>
@@ -130,28 +83,172 @@
         </li>
     {{/each}}
 </ul>
+
+
+<div class="row">
+    <ul class="pagination home-product__pagination">
+        {{#if (gt totalPages 1)}}
+            {{#if (gt currentPage 1)}}
+                <li class="pagination-item">
+                    <a href="?page={{subtract currentPage 1}}&limit={{limit}}" class="pagination-item__link">
+                        <i class="pagination-item__icon">&lt;</i>
+                    </a>
+                </li>
+            {{/if}}
+            {{#each (range 1 totalPages)}}
+                <li class="pagination-item {{#if (eq this ../currentPage)}}pagination-item--active{{/if}}">
+                    <a href="?page={{this}}&limit={{../limit}}" class="pagination-item__link">{{this}}</a>
+                </li>
+            {{/each}}
+            {{#if (lt currentPage totalPages)}}
+                <li class="pagination-item">
+                    <a href="?page={{add currentPage 1}}&limit={{limit}}" class="pagination-item__link">
+                        <i class="pagination-item__icon">&gt;</i>
+                    </a>
+                </li>
+            {{/if}}
+        {{/if}}
+    </ul>
+</div>
+
+
+
+
 <style>
-.order-table, .detail-table {
-    font-size: 20px;
+    .card {
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.order-table th, .order-table td, .detail-table th, .detail-table td {
+.card-header {
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #e9ecef;
+    padding: 0.75rem 1rem;
+    border-radius: 10px 10px 0 0;
+}
+
+.card-body {
+    padding: 1rem;
+}
+
+.table {
+    margin-bottom: 0;
+    width: 100%;
+}
+
+.table-sm th, .table-sm td {
+    padding: 0.3rem;
+    vertical-align: middle;
+}
+
+.img-fluid {
+    max-width: 50px;
+    height: auto;
+}
+
+.not-viewed {
+    background-color: #fff3cd;
+    border: 1px solid #ffeeba;
+    border-radius: 10px;
+    padding: 10px; 
+}
+
+.viewed {
+    background-color: #f8f9fa;
+    border: 1px solid #e9ecef;
+    border-radius: 10px;
+    padding: 10px; 
+}
+
+.card-title {
+    font-size: 1.25rem;
+    margin-bottom: 0;
+}
+
+.card-subtitle {
+    font-size: 1rem;
+    margin-bottom: 0.75rem;
+}
+
+.table th, .table td {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
 }
 
-.order-table img, .detail-table img {
-    max-width: 100px;
-    height: auto;
-}
-.not-viewed {
-    background-color: yellow;
-    padding: 10px; 
+.order-table, .detail-table {
+    font-size: 0.875rem;
 }
 
-.viewed {
-    background-color: white;
+/* pagination */
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+    padding: 0;
 }
 
+.pagination-item {
+    margin: 0 12px;
+}
+
+.pagination-item--active .pagination-item__link {
+    background-color: #df6788;
+    color: #fff;
+    border-radius: 4px;
+}
+
+.pagination-item--active .pagination-item__link:hover {
+    background-color: #df6788;
+}
+
+.pagination-item__link {
+    display: block;
+    text-decoration: none;
+    font-size: 1.8rem;
+    font-weight: 300;
+    color: #939393;
+    min-width: 40px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    border-radius: 2px;
+}
 </style>
+
+<script>
+    let currentPage = {{currentPage}};
+    const totalPages = {{totalPages}};
+    const limit = 10;
+
+    function renderPagination() {
+        const paginationList = document.querySelector('.home-product__pagination');
+        paginationList.innerHTML = `
+            <li class="pagination-item">
+                <a href="?page=${currentPage - 1}&limit=${limit}" class="pagination-item__link prev-page">
+                    <i class="pagination-item__icon">&lt;</i>
+                </a>
+            </li>
+        `;
+
+        for (let i = 1; i <= totalPages; i++) {
+            paginationList.innerHTML += `
+                <li class="pagination-item ${i === currentPage ? 'pagination-item--active' : ''}">
+                    <a href="?page=${i}&limit=${limit}" class="pagination-item__link">${i}</a>
+                </li>
+            `;
+        }
+
+        paginationList.innerHTML += `
+            <li class="pagination-item">
+                <a href="?page=${currentPage + 1}&limit=${limit}" class="pagination-item__link next-page">
+                    <i class="pagination-item__icon">&gt;</i>
+                </a>
+            </li>
+        `;
+    }
+
+    document.addEventListener('DOMContentLoaded', renderPagination);
+
+    </script>

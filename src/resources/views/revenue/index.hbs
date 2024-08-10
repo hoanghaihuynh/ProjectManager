@@ -1,144 +1,248 @@
-{{!-- <div>
-    <h1 class=" text-big display-center mt-4">Thống kê doanh thu</h1>
-
-    <div style="display: flex;">
-        <h2 class="text-v ">Tổng doanh thu : </h2>
-        <p style="color: red;font-size:25px">{{totalRevenue}} VND</p>
-    </div>
-
-    <div>
-        <h2 class="text-v">Lọc doanh thu theo khoảng thời gian</h2>
-        <form action="/admin/revenue/" method="get">
-            <label class="text" for="startDate">Ngày bắt đầu:</label>
-            <input class="text" type="date" id="startDate" name="startDate" value="{{startDate}}" required>
-            <label class="text" for="endDate">Ngày kết thúc:</label>
-            <input class="text" type="date" id="endDate" name="endDate" value="{{endDate}}" required>
-            <button class="text" type="submit">Tính toán</button>
-        </form>
-        <div style="display: flex;">
-            <h2 class="text">Tổng doanh thu : </h2>
-            <p class="text" style="color: red;">{{dateRangeRevenue}} VND</p>
+<div class="container__revenue">
+    <h1 class="revenue__title">Báo cáo doanh số</h1>
+    <div class="overview">
+        <div class="card card--purple">
+            <h2 class="card__title">Tổng doanh thu</h2>
+            <p class="card__percent">{{totalRevenue}} VND</p>
+        </div>
+        <div class="card card--blue">
+            <h2 class="card__title">Tổng sản phẩm đã bán</h2>
+            <p class="card__percent">{{totalQuantity}}</p>
+        </div>
+        <div class="card card--cyan">
+            <h2 class="card__title">Doanh thu theo ngày</h2>
+            <p class="card__percent">{{dailyRevenue}} VND</p>
+        </div>
+        <div class="card card--orange">
+            <h2 class="card__title">Doanh thu theo tuần</h2>
+            <p class="card__percent">{{weeklyRevenue}} VND</p>
+        </div>
+        <div class="card card--green">
+            <h2 class="card__title">Doanh thu theo tháng</h2>
+            <p class="card__percent">{{monthlyRevenue}} VND</p>
         </div>
     </div>
-</div> --}}
-{{!-- <div>
-    <h1>Revenue Management</h1>
-    <div>
-        <h2>Total Revenue</h2>
-        <p>{{totalRevenue}}</p>
-    </div>
-    <div>
-         <form action="/admin/revenue/" method="get">
-            <label class="text" for="startDate">Ngày bắt đầu:</label>
-            <input class="text" type="date" id="startDate" name="startDate" value="{{startDate}}" required>
-            <label class="text" for="endDate">Ngày kết thúc:</label>
-            <input class="text" type="date" id="endDate" name="endDate" value="{{endDate}}" required>
-            <button class="text" type="submit">Tính toán</button>
-        </form>
-        <h2>Revenue from{{#if startDate}} {{startDate}} {{else}}____ {{/if}}to {{#if endDate}} {{endDate}} {{else}}____ {{/if}}</h2>
-        <p>{{dateRangeRevenue}}</p>
-    </div>
-    <div>
-        <h2>Daily Revenue</h2>
-        <p>{{dailyRevenue}}</p>
-    </div>
-    <div>
-        <h2>Weekly Revenue</h2>
-        <p>{{weeklyRevenue}}</p>
-    </div>
-    <div>
-        <h2>Monthly Revenue</h2>
-        <p>{{monthlyRevenue}}</p>
-    </div>
-    <div>
-        <h2>Top Selling Products</h2>
-        <ul>
-            {{#each topSellingProducts}}
-                <li>{{this.name}} - {{this.quantity}} sold</li>
-            {{/each}}
-        </ul>
-    </div>
-</div> --}}
-<div class="revenue">
-    <h1 class="revenue__title display-center">Báo cáo danh số</h1>
-    <div class="revenue__total">
-        <h2 class="revenue__total-title text-big">Tổng doanh thu : </h2>
-        <p class="revenue__total-result text-big">{{totalRevenue}} VND </p>
-    </div>
-    <div class="revenue__total">
-        <h2 class="revenue__total-title text-big">Doanh thu theo ngày : </h2>
-        <p class="revenue__total-result text-big">{{dailyRevenue}} VND </p>
-    </div>
-    <div class="revenue__total">
-        <h2 class="revenue__total-title text-big">Doanh thu theo tuần : </h2>
-        <p class="revenue__total-result text-big">{{weeklyRevenue}} VND </p>
-    </div>
-    <div class="revenue__total">
-        <h2 class="revenue__total-title text-big">Doanh thu theo tháng : </h2>
-        <p class="revenue__total-result text-big">{{monthlyRevenue}} VND </p>
-    </div>
-    <div class="revenue_advance">
-        <h2 class="revenue__total-title text-big display-center">Tìm kiếm nâng cao : </h2>
-         <form action="/admin/revenue/" method="get">
-            <label class="text" for="startDate">Ngày bắt đầu:</label>
-            <input class="text" type="date" id="startDate" name="startDate" value="{{startDate}}" required>
-            <label class="text" for="endDate">Ngày kết thúc:</label>
-            <input class="text" type="date" id="endDate" name="endDate" value="{{endDate}}" required>
-            <button class="text" type="submit">Tính toán</button>
-        </form>
-        <div class="revenue_advance-result">
-            <h2 class="text">Revenue from{{#if startDate}} {{startDate}} {{else}}____ {{/if}}to {{#if endDate}} {{endDate}} {{else}}____ {{/if}} : </h2>
-            <p class="text">{{dateRangeRevenue}}</p>
+
+    <div class="revenue">
+        <div class="revenue__advance">
+            <h2 class="revenue__advance-title">Tìm kiếm nâng cao:</h2>
+            <div class="revenue__advance-content">
+                <form action="/admin/revenue/" method="get">
+                <label for="startDate">Ngày bắt đầu:</label>
+                <input type="date" id="startDate" name="startDate" value="{{startDate}}" required>
+                <label for="endDate">Ngày kết thúc:</label>
+                <input type="date" id="endDate" name="endDate" value="{{endDate}}" required>
+                <button type="submit">Tính toán</button>
+            </form>
+            </div>
+            <div class="revenue__advance-result">
+                <h2>Doanh thu từ {{#if startDate}} {{startDate}} {{else}}____ {{/if}} đến {{#if endDate}} {{endDate}} {{else}}____ {{/if}}:</h2>
+                <p>{{dateRangeRevenue}} VND</p>
+            </div>
+        </div>
+        <div class="topProduct">
+            <h2 class="topProduct__title">Top 5 sản phẩm bán chạy</h2>
+            <ul>
+                {{#each topSellingProducts}}
+                    <li class="topProduct__item">{{this.name}} - {{this.quantity}} đã bán</li>
+                {{/each}}
+            </ul>
+        </div>
+        <div class="" style="height: 30px;">
+
         </div>
     </div>
-    <ul class="topProduct ">
-        <h2 class="revenue__total-title text-big display-center">Top sản phẩm bán chạy </h2>
-        {{#each topSellingProducts}}
-            <li class="topProduc__item text">{{this.name}} - {{this.quantity}} sold</li>
-        {{/each}}
-    </ul>
 </div>
 
 <style>
-.revenue {
-    margin-top:50px ;
+    body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+.container__revenue {
+    background-color: #fff;
+}
+.overview {
+    display: flex;
+    gap: 20px;
+    justify-content: space-between;
     padding: 50px;
-    border: 1px solid #333;
-    border-radius: 10px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    border-radius: 8px;
+    flex-wrap: wrap;
+}
+
+.card {
+    flex: 1 1 200px;
+    padding: 20px;
+    border-radius: 8px;
+    color: #fff;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.card__title {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.card__percent {
+    font-size: 16px;
+    background-color: rgba(255, 255, 255, 0.2);
+    padding: 10px 0;
+    border-radius: 4px;
+    display: block;
+    margin: auto 0 0;
+}
+
+.card--purple {
+    background-color: #6a1b9a;
+}
+
+.card--blue {
+    background-color: #1976d2;
+}
+
+.card--cyan {
+    background-color: #00acc1;
+}
+
+.card--orange {
+    background-color: #fb8c00;
+}
+
+.card--green {
+    background-color: #28a745;
+}
+
+.revenue {
+    margin: 50px auto;
+    padding: 0px 50px;
+    background-color: #fff;
+    border-radius: 8px;
+}
+
+.revenue__title {
+    text-align: center;
+    font-size: 30px;
+    margin-top:30px;
+    padding-top: 50px;
+    color: #007bff;
 }
 
 .revenue__total {
     display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+
+.revenue__total-title {
+    font-size: 18px;
+    font-weight: bold;
 }
 
 .revenue__total-result {
-    color: red;
+    font-size: 18px;
+    color: #28a745;
 }
 
-.revenue_advance {
-    margin-top: 10px;
-    padding: 30px;
-    border: 1px solid #333;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+.revenue__advance {
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
 }
 
-.revenue_advance-result {
+.revenue__advance-title {
+    font-size: 20px;
+    margin-bottom: 15px;
     display: flex;
+    justify-content: center;
 }
 
-.revenue_advance-result p{
-    margin-left: 20px;
-    color: red;
+.revenue__advance-content {
 }
-.topProduct {
+
+.revenue__advance form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.revenue__advance label {
+    flex: 1 1 100px;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.revenue__advance input {
+    flex: 2 1 200px;
+    padding: 5px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.revenue__advance button {
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.revenue__advance button:hover {
+    background-color: #0056b3;
+}
+
+.revenue__advance-result {
     margin-top: 10px;
-    padding: 30px;
-    border: 1px solid #333;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    font-size: 18px;
+    color: #dc3545;
+    display: flex;
+    justify-content: center;
 }
-.topProduc__item {
+
+.revenue__advance-result h2{
+    font-size: 18px; 
+}
+
+.topProduct {
+    margin: 30px 0px;
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+}
+
+.topProduct__title {
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    padding-top: 30px;
+}
+
+.topProduct ul {
     list-style-type: none;
-    margin: 10px 0;
+    padding: 30px;
+
 }
+
+.topProduct__item {
+    font-size: 16px;
+    padding: 5px 0;
+    {{!-- border-bottom: 1px solid #ccc; --}}
+}
+
+.topProduct__item:last-child {
+    border-bottom: none;
+}
+
 </style>

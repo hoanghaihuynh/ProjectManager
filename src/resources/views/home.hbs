@@ -22,23 +22,28 @@
         </div>
     </div>
 </div>
+
+<ul class="header__sort-bar">
+    <li class="header__sort-item">
+        <a href="#caffee" class="text header__sort-link">Coffee</a>
+    </li>
+    <li class="header__sort-item">
+        <a href="#juice" class="text header__sort-link">Nước ép</a>
+    </li>
+    <li class="header__sort-item">
+        <a href="#tea" class="text header__sort-link">Trà</a>
+    </li>
+    <li class="header__sort-item">
+        <a href="#yaourt" class="text header__sort-link">Sữa chua</a>
+    </li>
+    <li class="header__sort-item">
+        <a href="#smoothie" class="text header__sort-link">Sinh tố</a>
+    </li>
+</ul>
+
 <div class="container mt-4">
     <div class="row">
-        {{!-- {{#each items}}
-        <div class="col-sm-6 col-lg-4">      
-            <div class="card">
-            <img src="{{this.img}}" class="card-img-top" alt="{{this.name}}">
-            <div class="card-body">
-                <p class="card-text">{{this.name}}</p>
-            </div>
-            <div class="card-body">
-                <p class="price">{{this.price}}</p>
-            </div>
-            </div>
-            
-        </div>
-         {{/each}} --}}
-         <div class="col-3">
+         <div class="col-3 d-none d-md-block col-md-3 col-xl-3">
             <div class="row">
                <div class="container-cate">
                 <div class="cate">
@@ -56,7 +61,7 @@
                </div>
             </div>
          </div>
-         <div class="col-9 ">
+         <div class="col-12 col-md-9 col-xl-9">
             <div class="row">
             <div id="caffee" class="row">
                 <p class="type-item">Coffee</p>

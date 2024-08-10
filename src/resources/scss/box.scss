@@ -1,0 +1,25 @@
+@import 'variables';
+
+//box element
+.box-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    column-gap: 30px;
+    margin: 40px 0 40px 0;
+}
+.box-items {
+    // width: 350px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.box-items h1{
+    color: $text-color;
+}
+
+.box-item-img {
+    width: 100%;
+    border-radius: 6px;
+}

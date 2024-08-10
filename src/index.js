@@ -6,11 +6,11 @@ const { engine } = require("express-handlebars");
 const app = express()
 const port = 8000
 
+// const cors = require('cors')
+// app.use(cors());
 
-
-
-
-
+// cron job
+const cronJobs = require('./config/cron-job');
 // tu lam
 const jwt = require('jsonwebtoken');
 const bodyParser = require('body-parser');
@@ -77,6 +77,24 @@ app.engine("hbs", engine({
         second: '2-digit',
         hour12: false,
       });
+    },
+    eq: function (a, b) {
+      return a === b;
+    },
+    gt: function (a, b) {
+        return a > b;
+    },
+    lt: function (a, b) {
+        return a < b;
+    },
+    range: function (n) {
+        return Array.from({ length: n }, (v, k) => k + 1);
+    },
+    add: function (a, b) {
+        return a + b;
+    },
+    subtract: function (a, b) {
+        return a - b;
     }
   }
 }));
@@ -105,9 +123,7 @@ app.use('/', userRouter);
 //set websocket.io 
 app.set('io', io);
 io.on('connection', (socket) => {
-  console.log('Admin connected to socket.');
 
-  // Nghe sự kiện 'newOrder'
   socket.on('newOrder', (data) => {
       console.log('New order received:', data);
       io.emit('updateOrders', data); // Gửi thông báo cập nhật đơn hàng cho tất cả các client đang kết nối

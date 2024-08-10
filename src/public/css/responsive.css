@@ -31,8 +31,6 @@
     width: 100%;
     height: 200px;
     border-radius: 10px; }
-  .cate-item::after {
-    display: none; }
   .container-cate {
     height: 100px; }
   .text-big {
@@ -61,32 +59,58 @@
   .type-item p {
     font-size: 14px; }
   .card-container {
-    display: flex;
-    width: 120px;
-    height: 200px;
-    border: 2px solid #ccc;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    margin-bottom: 10px;
-    background-color: #df6788;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 5px; }
-  .card-img {
-    border: 2px solid #ccc;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); }
+    width: 100%;
+    grid-template-columns: none; }
   .card-img img {
-    width: 115px;
-    height: 79px;
-    display: flex;
-    align-items: center;
-    justify-content: center; }
+    height: 130px; }
   .card-text {
-    padding: 5px 10px; } }
+    height: 50px; }
+  .footer-container .row-1 {
+    display: grid;
+    grid-template-columns: 1fr 1fr; }
+  .about-us-element-1-container .row-1 .col-1 img, .about-us-element-1-container .row-3 .col-2 img {
+    width: 60% !important; }
+  .about-us-element-1-container center {
+    font-size: 50px !important;
+    color: #3d155e; }
+  .about-us-element-2-container .row-1 {
+    flex-direction: column; }
+  .about-us-element-3-container {
+    flex-direction: column;
+    margin-bottom: 100px !important; }
+  .about-us-element-3-container .col-1 {
+    margin-bottom: 40px; }
+  .about-us-element-3-container .col-2 {
+    display: flex;
+    justify-content: center; }
+  .about-us-element-3-container .col-2 img {
+    width: 70% !important; }
+  .about-us-element-4-container {
+    flex-direction: column;
+    margin-top: 30px !important; }
+  .about-us-element-4-container .col-1 {
+    margin-bottom: 40px; }
+  .about-us-element-4-container .col-1 {
+    display: flex;
+    justify-content: center; }
+  .about-us-element-4-container .col-1 img {
+    width: 70% !important; }
+  .contact-content {
+    display: block; }
+  .header__sort-bar {
+    display: flex; } }
 
-@media only screen and (max-width: 1197px) {
+@media only screen and (max-width: 1200px) {
+  .header {
+    justify-content: space-between; }
+  .cotainer-menu {
+    display: none; }
+  .navigation-bar {
+    width: 30px;
+    margin: 20px 40px 0 0;
+    display: block !important; }
+  .navigation-bar img {
+    width: 100%; }
   .container-cate {
     height: 100px; }
   .text-big {
@@ -97,8 +121,7 @@
   .cate {
     font-size: 22px; }
   .cate ul {
-    margin-bottom: 10px;
-    padding-left: 10px; }
+    margin-bottom: 10px; }
   .cate-item a {
     text-decoration: none;
     color: #3d155e;
@@ -115,34 +138,24 @@
   .type-item p {
     font-size: 14px; }
   .card-container {
-    display: flex;
-    width: 120px;
-    height: 200px;
-    border: 2px solid #ccc;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    margin-bottom: 10px;
-    background-color: #df6788;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 5px; }
-  .card-img {
-    border: 2px solid #ccc;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); }
+    width: 100%;
+    grid-template-columns: none; }
   .card-img img {
-    width: 115px;
-    height: 79px;
-    display: flex;
-    align-items: center;
-    justify-content: center; }
-  .card-text {
-    padding: 5px 10px; }
-  .cate-item::after {
-    content: "";
-    border-top: 1px solid #df6788;
-    position: absolute;
-    top: 30px;
-    left: -10px;
-    right: 83px; } }
+    height: 200px; } }
+
+@media screen and (max-width: 564px) {
+  .footer-container .row-1 {
+    grid-template-columns: 1fr 1fr;
+    row-gap: 40px; }
+  .footer-container .row-1 p {
+    font-size: 18px !important; }
+  .footer-container .row-1 .col-1 p ul li a {
+    font-size: 14px !important; } }
+
+@media screen and (max-width: 425px) {
+  .footer-container .row-1 {
+    grid-template-columns: 1fr; }
+  .footer-container .row-1 p {
+    font-size: 28px !important; }
+  .footer-container .row-1 .col-1 p ul li a {
+    font-size: 18px !important; } }

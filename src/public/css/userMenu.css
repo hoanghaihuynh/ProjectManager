@@ -1,4 +1,76 @@
-/* Styles for the modal background */
+@charset "UTF-8";
+.text-color {
+  color: #3d155e; }
+
+.backgound-color {
+  background-color: #df6788; }
+
+.text {
+  color: #3d155e;
+  font-size: 20px; }
+
+.text-big {
+  color: #3d155e;
+  font-size: 30px; }
+
+.text-v {
+  color: #3d155e;
+  font-size: 25px; }
+
+.text-sm {
+  color: #3d155e;
+  font-size: 14px; }
+
+.display-center {
+  display: flex;
+  justify-content: center;
+  text-align: center; }
+
+.method__pay {
+  width: 100%;
+  padding: 20px 10px;
+  background-color: #fff;
+  text-align: center;
+  border-top: 1px solid #ddd; }
+
+.method__pay-title {
+  font-size: 16px;
+  color: #333;
+  margin-bottom: 10px;
+  font-weight: bold; }
+
+.custom-select {
+  position: relative;
+  width: 100%; }
+
+.custom-select select {
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #fff;
+  cursor: pointer;
+  appearance: none;
+  /* Loại bỏ kiểu mặc định của trình duyệt */
+  transition: border-color 0.3s, box-shadow 0.3s; }
+
+.custom-select select:focus {
+  border-color: #777;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+  outline: none; }
+
+.custom-select::after {
+  content: '\25BC';
+  /* Mũi tên chỉ xuống */
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  font-size: 14px;
+  color: #555; }
+
 .modal {
   display: none;
   position: fixed;
@@ -100,3 +172,25 @@
   color: #333;
   font-size: 18px;
   font-weight: bold; }
+
+.voucher {
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+  padding: 20px;
+  width: 100%;
+  margin-bottom: 20px; }
+
+.voucher input {
+  width: 100px; }
+
+.voucher button {
+  background-color: #df6788;
+  color: #3d155e;
+  border: 1px solid #ddd;
+  border-radius: 5px; }
+
+.voucher button:hover {
+  background-color: #3d155e;
+  color: white; }

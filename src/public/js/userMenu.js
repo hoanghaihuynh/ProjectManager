@@ -134,6 +134,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 document.addEventListener('DOMContentLoaded', function() {
   const deleteLinks = document.querySelectorAll('.delete-link');
+
   deleteLinks.forEach(link => {
     link.addEventListener('click', function(event) {
       event.preventDefault();
@@ -157,6 +158,8 @@ document.addEventListener('DOMContentLoaded', function() {
               const currentCount = parseInt(cartNotice.textContent);
               cartNotice.textContent = currentCount - 1;
             }
+            // Cập nhật lại tổng số tiền
+            calculateTotal();
           }
         } else {
           console.log('Xóa thất bại');
@@ -167,97 +170,29 @@ document.addEventListener('DOMContentLoaded', function() {
       });
     });
   });
-});
 
-document.addEventListener('DOMContentLoaded', function() {
-  const placeOrderBtn = document.getElementById('placeOrderBtn');
-  const numTableInput = document.getElementById('numTable');
-
-  if (placeOrderBtn) {
-    placeOrderBtn.addEventListener('click', function(event) {
-      event.preventDefault();
-      if (!numTableInput.checkValidity()) {
-        alert('Vui lòng nhập số bàn hợp lệ.');
-        return;
-      }
-      const numTable = numTableInput.value;
-      const items = [];
-      const cartItems = document.querySelectorAll('.header__cart-item');
-      cartItems.forEach(item => {
-        const productId = item.getAttribute('data-id');
-        const nameElement = item.querySelector('.header__cart-item-name');
-        const imageElement = item.querySelector('.header__cart-img');
-        const priceItemElement = item.querySelector('.header__cart-item-price');
-        const quantityElement = item.querySelector('.header__cart-item-qnt');
-        const sizeElement = item.querySelector('.header__cart-item-size');
-        const iceElement = item.querySelector('.header__cart-item-ice');
-        const sugarElement = item.querySelector('.header__cart-item-sugar');
-        const descriptionElement = item.querySelector('.header__cart-item-description');
-
-        const name = nameElement ? nameElement.textContent : '';
-        const image = imageElement ? imageElement.getAttribute('src') : '';
-        const priceItem = priceItemElement ? parseFloat(priceItemElement.textContent.replace(/[\D]/g, '').replace(/^0+/, '')) : 0;  
-        const quantity = quantityElement ? parseInt(quantityElement.textContent) : 0;
-        const size = sizeElement ? sizeElement.textContent : '';
-        const ice = iceElement ? iceElement.textContent : '';
-        const sugar = sugarElement ? sugarElement.textContent : '';
-        const description = descriptionElement ? descriptionElement.textContent : '';
-        const totalPrice = priceItem * quantity;
-
-        items.push({
-          productId,
-          name,
-          image,
-          priceItem,
-          totalPrice,
-          quantity,
-          size,
-          ice,
-          sugar,
-          description
-        });
-      });
-
-      // Gửi yêu cầu POST tới server
-      fetch('/order/add', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          items,
-          totalQuantity: items.reduce((total, item) => total + item.quantity, 0),
-          totalPrice: items.reduce((total, item) => total + item.totalPrice, 0),
-          numTable
-        })
-      })
-      .then(response => {
-        if (!response.ok) {
-          throw new Error('Đặt hàng thất bại: ' + response.status);
-        }
-        return response.json();
-      })
-      .then(data => {
-        alert('Đặt hàng thành công!');
-        // Xóa các mục trong giỏ hàng ngay trên client-side
-        cartItems.forEach(item => {
-          item.remove();
-        });
-
-        // Cập nhật số lượng sản phẩm trong giỏ hàng
-        const cartNotice = document.getElementById('cart-notice');
-        if (cartNotice) {
-          cartNotice.textContent = '0';
-        }
-
-        window.location.reload();
-      })
-      .catch(error => {
-        console.error('Lỗi khi đặt hàng:', error); 
-        alert('Có lỗi xảy ra khi đặt hàng. Vui lòng thử lại.');
-      });
+  function calculateTotal() {
+    let total = 0;
+    document.querySelectorAll('.header__cart-item').forEach(function(item) {
+      const price = parseFloat(item.querySelector('.header__cart-item-price').textContent.replace(/[\D]/g, '').replace(/^0+/, ''));
+      const quantity = parseInt(item.querySelector('.header__cart-item-qnt').textContent);
+      total += price * quantity;
     });
+    const totalPriceElement = document.getElementById('total-price');
+    if (totalPriceElement) {
+      totalPriceElement.textContent = 'Tổng số tiền: ' + formatPrice(total);
+    }
   }
+
+  function formatPrice(price) {
+    return new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(price);
+  }
+
+  // Tính tổng số tiền khi tải trang
+  calculateTotal();
 });
+
+
+
 
 

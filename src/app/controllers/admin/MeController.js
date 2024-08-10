@@ -1,6 +1,7 @@
 const menu=require('../../models/Menu')
 const staff=require('../../models/Staff')
 const ingredient=require('../../models/Ingredient')
+const voucher = require('../../models/Voucher')
 const { mutipleMongooseToObject }=require('../../../util/mongoose')
 
 class MeController {
@@ -33,6 +34,17 @@ class MeController {
             .then((ingredients)=>{
                 res.render('me/stored-ingredient',{ 
                     ingredients : mutipleMongooseToObject(ingredients)
+                 })
+            })
+            .catch((err)=>{
+                res.status(500).json({error : 'message'})
+            })
+    } 
+    storedVoucher(req,res){
+        voucher.find()
+            .then((vouchers)=>{
+                res.render('me/stored-voucher',{ 
+                    vouchers : mutipleMongooseToObject(vouchers)
                  })
             })
             .catch((err)=>{

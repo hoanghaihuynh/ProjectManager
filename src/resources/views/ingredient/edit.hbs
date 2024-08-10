@@ -1,24 +1,37 @@
-
 <div class="mt-4">
     <h3 class="text-big display-center">Sửa Nguyên Liệu</h3>
-      <form  method="POST" action="/admin/ingredient/{{Ingredient._id}}?_method=PUT">
-            <div class="form-group">
-                <label class="text mt-4 " for="name">Name</label>
-                <input type="text" class="form-control" value="{{Ingredient.name}}" id="ingredientName" name="name" placeholder="Enter name of ingredient">
-            </div>
-            <div class="form-group">
-                <label class="text mt-4" for="email">Price</label>
-                <input type="text" class="form-control" value="{{Ingredient.price}}" id="ingredientPrice" name="price" placeholder="Enter price of ingredient">
-            </div>
-            <div class="form-group">
-                <label class="text mt-4" for="img">Image</label>
-                <input type="text" class="form-control" value="{{Ingredient.img}}" id="ingredientImg" name="img" placeholder="Enter img of ingredient">
-            </div>
-            <div class="form-group">
-                <label class="text mt-4" for="phoneNumber">Quantity</label>
-                <input type="text" class="form-control" value="{{Ingredient.quantity}}" id="ingredientQuantity" name="quantity" placeholder="Enter quantity of ingredient">
-            </div>
-            
-            <button type="submit" class="btn btn-primary backgound-color mt-4 text-color">Sửa Nguyên Liệu</button>
-        </form>
+    <form method="POST" action="/admin/ingredient/{{Ingredient._id}}">
+        <div class="form-group">
+            <label class="text mt-4" for="name">Tên Nguyên Liệu</label>
+            <input type="text" class="form-control" value="{{Ingredient.name}}" id="ingredientName" name="name" placeholder="Enter name of ingredient" required>
+        </div>
+        <div class="form-group">
+            <label class="text mt-4" for="price">Giá</label>
+            <input type="number" class="form-control" value="{{Ingredient.price}}" id="ingredientPrice" name="price" placeholder="Enter price of ingredient" required>
+        </div>
+        <div class="form-group">
+            <label class="text mt-4" for="quantity">Số Lượng</label>
+            <input type="number" class="form-control" value="{{Ingredient.quantity}}" id="ingredientQuantity" name="quantity" placeholder="Enter quantity of ingredient" required>
+        </div>
+        <div class="form-group">
+            <label class="text mt-4" for="img">Hình Ảnh</label>
+            <input type="text" class="form-control" value="{{Ingredient.img}}" id="ingredientImg" name="img" placeholder="Enter image URL of ingredient" required>
+        </div>
+        <div class="form-group">
+            <label class="text mt-4" for="expiryDate">Ngày Hết Hạn</label>
+            <input type="date" class="form-control" value="{{Ingredient.expiryDate}}" id="expiryDate" name="expiryDate" required>
+        </div>
+        <button type="submit" class="btn btn-primary background-color mt-4 text-color">Sửa Nguyên Liệu</button>
+    </form>
 </div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        document.getElementById('expiryDate').setAttribute('min', new Date().toISOString().split('T')[0]);
+        // Format the expiration date
+        var ExpirationDate = new Date("{{Ingredient.expiryDate}}");
+        var formattedDate = ExpirationDate.toISOString().split('T')[0];
+        document.getElementById('expiryDate').value = formattedDate;
+  });
+   
+</script>

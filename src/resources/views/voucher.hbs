@@ -1,0 +1,59 @@
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    margin: 0;
+  }
+  table {
+    border-collapse: collapse;
+    width: 60%;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin: 0 auto;
+    margin-top: 50px;
+  }
+  th, td {
+    padding: 12px;
+    text-align: center;
+    border: 1px solid #ddd;
+    font-size: 18px;
+  }
+  th {
+    background-color: #f9f9f9;
+    font-weight: bold;
+  }
+  tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+</style>
+
+<table>
+  <thead>
+    <tr>
+      <th>Code</th>
+      <th>Type</th>
+      <th>Value</th>
+      <th>ExpirationDate</th>
+      <th>Active</th>
+      <th>CreateAt</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each vouchers}}
+      <tr>
+        <td>{{this.code}}</td>
+        <td>{{this.discountType}}</td>
+        <td>{{this.discountValue}}</td>
+        <td>{{formatDate this.expirationDate}}</td>
+        <td>
+          <input type="checkbox" {{#if this.isActive}}checked{{/if}} disabled>
+        </td>
+        <td>{{formatDate this.createdAt}}</td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>

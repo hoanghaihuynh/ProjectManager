@@ -1,6 +1,5 @@
 const Order = require('../../models/Order');
 const { getRevenueByPeriod, getTopSellingProducts } = require('../../../util/revenueUtils');
-const { mutipleMongooseToObject, mongooseToObject } = require('../../../util/mongoose');
 
 class RevenueController {
     index(req, res) {
@@ -19,6 +18,9 @@ class RevenueController {
     
         Promise.all([allCompletedOrdersQuery, dateRangeOrdersQuery])
             .then(([allCompletedOrders, dateRangeOrders]) => {
+
+                const totalQuantity = allCompletedOrders.reduce((acc,order)=> acc + order.totalQuantity,0);
+
                 const totalRevenue = allCompletedOrders.reduce((acc, order) => acc + order.totalPrice, 0);
                 const dateRangeRevenue = dateRangeOrders.reduce((acc, order) => acc + order.totalPrice, 0);
     
@@ -29,6 +31,7 @@ class RevenueController {
                 const topSellingProducts = getTopSellingProducts(allCompletedOrders);
     
                 res.render('revenue/index', {
+                    totalQuantity,
                     totalRevenue,
                     dateRangeRevenue,
                     dailyRevenue,

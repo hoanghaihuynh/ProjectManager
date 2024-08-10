@@ -1,116 +1,52 @@
-// /* Styles for the modal background */
-// .modal {
-//   display: none;
-//   position: fixed;
-//   z-index: 1;
-//   top: 0;
-//   left: 100%; 
-//   width: 100%; 
-//   height: 100%;
-//   overflow: hidden;
-//   background-color: rgba(0, 0, 0, 0.5); 
-//   transform: translateX(-100%); 
-//   transition: transform 0.5s; 
-// }
+@import 'variables';
+.method__pay {
+  width: 100%;
+  padding: 20px 10px;
+  background-color: #fff; 
+  text-align: center;
+  border-top: 1px solid #ddd;
+}
 
-// /* Styles for the modal content */
-// .modal-content {
-//   background-color: #fff;
-//   padding: 20px;
-//   border: none;
-//   box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
-//   box-sizing: border-box;
-//   height: 100%; 
-//   overflow-y: auto;
-//   width: 30%;
-//   position: absolute;
-//   right: 0;
-// }
+.method__pay-title {
+  font-size: 16px;
+  color: #333;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
 
-// .modal.active {
-//   display: block;
-//   transform: translateX(-100%);
-// }
+.custom-select {
+  position: relative;
+  width: 100%;
+}
 
-// .close {
-//   color: #aaa;
-//   float: right; 
-//   font-size: 28px;
-//   font-weight: bold;
-//   cursor: pointer;
-// }
+.custom-select select {
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #fff;
+  cursor: pointer;
+  appearance: none; /* Loại bỏ kiểu mặc định của trình duyệt */
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
 
-// .close:hover,
-// .close:focus {
-//   color: black;
-//   text-decoration: none;
-// }
+.custom-select select:focus {
+  border-color: #777;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+  outline: none;
+}
 
-// .quantity-control {
-//   display: flex;
-//   align-items: center;
-// }
-
-// .quantity-control button {
-//   background-color: #ddd;
-//   border: none;
-//   padding: 10px;
-//   cursor: pointer;
-// }
-
-// .quantity-control input {
-//   text-align: center;
-//   width: 60px;
-//   margin: 0 5px;
-// }
-
-// .footer__modal {
-//   display: flex;
-//   justify-content: space-between;
-//   margin-top: 20px;
-// }
-
-// .footer__modal-btn {
-//   font-size: 24px;
-//   width: 30px;
-// }
-
-// .footer__modal-btn--submit {
-//   flex: 1;
-//   margin-left: 20px;
-//   padding: 10px;
-//   background-color: #28a745;
-//   color: white;
-//   border: none;
-//   cursor: pointer;
-// }
-
-// .footer__modal-btn--submit:hover {
-//   background-color: #218838;
-// }
-
-// .form-group {
-//   margin-bottom: 15px;
-// }
-
-// .form-group label {
-//   font-weight: bold;
-// }
-
-// .form-group input[type="radio"] {
-//   margin-right: 10px;
-// }
-
-// .text-center {
-//   text-align: center;
-// }
-
-// .text-color {
-//   color: #333;
-//   font-size: 18px;
-//   font-weight: bold;
-// }
-/* Styles for the modal background */
+.custom-select::after {
+  content: '\25BC'; /* Mũi tên chỉ xuống */
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  font-size: 14px;
+  color: #555;
+}
 .modal {
   display: none;
   position: fixed;
@@ -230,3 +166,30 @@
   font-size: 18px;
   font-weight: bold;
 }
+// voucher
+.voucher {
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+  padding: 20px;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.voucher input {
+  width: 100px;
+}  
+
+.voucher button {
+  background-color: $bg-color;
+  color: $text-color;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}  
+
+.voucher button:hover {
+  background-color: $text-color;
+  color: white;
+}  
+// end voucher

@@ -1,0 +1,26 @@
+.text-color {
+  color: #3d155e; }
+
+.backgound-color {
+  background-color: #df6788; }
+
+.text {
+  color: #3d155e;
+  font-size: 20px; }
+
+.text-big {
+  color: #3d155e;
+  font-size: 30px; }
+
+.text-v {
+  color: #3d155e;
+  font-size: 25px; }
+
+.text-sm {
+  color: #3d155e;
+  font-size: 14px; }
+
+.display-center {
+  display: flex;
+  justify-content: center;
+  text-align: center; }

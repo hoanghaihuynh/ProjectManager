@@ -44,6 +44,14 @@
                         <div class="card-body card-text">
                             <p class="card-text text-sm display-center">{{this.quantity}} kg</p>
                         </div>
+                        <div class="card-body card-text">
+                            <p class="card-text text-sm display-center">
+                                Hạn sử dụng: {{formatDate this.expiryDate}}
+                            </p>
+                            <p class="card-text text-sm display-center status-{{this.status}}">
+                                {{this.status}}
+                            </p>
+                        </div>
                         </div>
                     </div>          
                 </div>
@@ -51,3 +59,15 @@
          </div>
     </div>
 </div>
+
+<style>
+    .status-expired {
+        color: red;
+    }
+    .status-expiring-soon {
+        color: orange;
+    }
+    .status-fresh {
+        color: green;
+    }
+</style>

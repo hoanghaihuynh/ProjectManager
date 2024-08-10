@@ -5,8 +5,10 @@ const getRevenueByPeriod = (orders, period) => {
             periodStart.setHours(0, 0, 0, 0);
             break;
         case 'weekly':
-            periodStart.setDate(periodStart.getDate() - periodStart.getDay());
-            periodStart.setHours(0, 0, 0, 0);
+            const dayOfWeek = periodStart.getDay(); // Chủ nhật = 0, Thứ Hai = 1  
+            const daysToSubtract = dayOfWeek === 0 ? 6 : dayOfWeek - 1; // Nếu là Chủ nhật, trừ 6 ngày, ngược lại trừ ngày hiện tại - 1  
+            periodStart.setDate(periodStart.getDate() - daysToSubtract);  
+            periodStart.setHours(0, 0, 0, 0);  
             break;
         case 'monthly':
             periodStart.setDate(1);
